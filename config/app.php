@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Flugg\Responder\ResponderServiceProvider::class,
+        BenSampo\Enum\EnumServiceProvider::class,
 
         /*
          * Application Service Providers...

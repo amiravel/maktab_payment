@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "488826e8d6585014354bb6f771aa9cac",
+    "content-hash": "b6fcb23ddfc81b123a2ee3830a99e910",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -114,6 +114,154 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.3"
             },
             "time": "2020-10-30T02:02:47+00:00"
+        },
+        {
+            "name": "beberlei/assert",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "5367e3895976b49704ae671f75bc5f0ba1b986ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/5367e3895976b49704ae671f75bc5f0ba1b986ab",
+                "reference": "5367e3895976b49704ae671f75bc5f0ba1b986ab",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-intl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": "^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "*",
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": ">=6.0.0",
+                "yoast/phpunit-polyfills": "^0.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Assert\\": "lib/Assert"
+                },
+                "files": [
+                    "lib/Assert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/beberlei/assert/issues",
+                "source": "https://github.com/beberlei/assert/tree/v3.3.0"
+            },
+            "time": "2020-11-13T20:02:54+00:00"
+        },
+        {
+            "name": "bensampo/laravel-enum",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BenSampo/laravel-enum.git",
+                "reference": "a16fa6d9d1646b9fe52c5c91add6bc452c8baa8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BenSampo/laravel-enum/zipball/a16fa6d9d1646b9fe52c5c91add6bc452c8baa8d",
+                "reference": "a16fa6d9d1646b9fe52c5c91add6bc452c8baa8d",
+                "shasum": ""
+            },
+            "require": {
+                "hanneskod/classtools": "^1.2",
+                "illuminate/contracts": "^8.0",
+                "illuminate/support": "^8.0",
+                "laminas/laminas-code": "^3.4",
+                "nikic/php-parser": "^4.10",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.9",
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^6.0",
+                "phpstan/phpstan": "^0.12.59",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "BenSampo\\Enum\\EnumServiceProvider"
+                    ]
+                },
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BenSampo\\Enum\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Sampson",
+                    "homepage": "https://sampo.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple, extensible and powerful enumeration implementation for Laravel.",
+            "homepage": "https://github.com/bensampo/laravel-enum",
+            "keywords": [
+                "bensampo",
+                "enum",
+                "laravel",
+                "package",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/BenSampo/laravel-enum/issues",
+                "source": "https://github.com/BenSampo/laravel-enum/tree/v3.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/bensampo",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-12-15T10:28:48+00:00"
         },
         {
             "name": "brick/math",
@@ -618,6 +766,81 @@
             "time": "2020-10-22T13:48:01+00:00"
         },
         {
+            "name": "flugger/laravel-responder",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flugger/laravel-responder.git",
+                "reference": "cd6d50b3b1263ca256a5a2e545d141a93d0d6862"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flugger/laravel-responder/zipball/cd6d50b3b1263ca256a5a2e545d141a93d0d6862",
+                "reference": "cd6d50b3b1263ca256a5a2e545d141a93d0d6862",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.1|^6.0|^7.0|^8.0",
+                "illuminate/support": "^5.1|^6.0|^7.0|^8.0",
+                "league/fractal": "^0.17.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.5",
+                "fzaninotto/faker": "^1.6",
+                "illuminate/database": "^5.1|^6.0|^7.0|^8.0",
+                "mockery/mockery": "^0.9.5|^1.0",
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.5|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Flugg\\Responder\\ResponderServiceProvider"
+                    ],
+                    "aliases": {
+                        "Responder": "Flugg\\Responder\\Facades\\Responder",
+                        "Transformer": "Flugg\\Responder\\Facades\\Transformer"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flugg\\Responder\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Tømmerås",
+                    "email": "flugged@gmail.com"
+                }
+            ],
+            "description": "A Laravel Fractal package for building API responses, giving you the power of Fractal and the elegancy of Laravel.",
+            "homepage": "https://github.com/flugger/laravel-responder",
+            "keywords": [
+                "api",
+                "fractal",
+                "laravel",
+                "lumen",
+                "responder",
+                "response",
+                "transformer"
+            ],
+            "support": {
+                "issues": "https://github.com/flugger/laravel-responder/issues",
+                "source": "https://github.com/flugger/laravel-responder/tree/v3.1.2"
+            },
+            "time": "2020-09-09T22:01:06+00:00"
+        },
+        {
             "name": "fruitcake/laravel-cors",
             "version": "v2.0.3",
             "source": {
@@ -993,6 +1216,55 @@
             "time": "2020-09-30T07:37:11+00:00"
         },
         {
+            "name": "hanneskod/classtools",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hanneskod/classtools.git",
+                "reference": "d365ddac0e602027c0471ea292f4ba2afcb49394"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hanneskod/classtools/zipball/d365ddac0e602027c0471ea292f4ba2afcb49394",
+                "reference": "d365ddac0e602027c0471ea292f4ba2afcb49394",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "^4",
+                "php": ">=7.1",
+                "symfony/finder": "^4|^5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "hanneskod\\classtools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "WTFPL"
+            ],
+            "authors": [
+                {
+                    "name": "Hannes Forsgård",
+                    "email": "hannes.forsgard@fripost.org"
+                }
+            ],
+            "description": "Find, extract and process classes from file system",
+            "homepage": "https://github.com/hanneskod/classtools",
+            "keywords": [
+                "class finder",
+                "code generator",
+                "metaprogramming",
+                "minimizer"
+            ],
+            "support": {
+                "issues": "https://github.com/hanneskod/classtools/issues",
+                "source": "https://github.com/hanneskod/classtools/tree/1.0"
+            },
+            "time": "2020-03-05T20:41:28+00:00"
+        },
+        {
             "name": "jaybizzle/crawler-detect",
             "version": "v1.2.103",
             "source": {
@@ -1126,6 +1398,206 @@
                 }
             ],
             "time": "2020-06-13T08:05:20+00:00"
+        },
+        {
+            "name": "laminas/laminas-code",
+            "version": "3.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-code.git",
+                "reference": "b549b70c0bb6e935d497f84f750c82653326ac77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/b549b70c0bb6e935d497f84f750c82653326ac77",
+                "reference": "b549b70c0bb6e935d497f84f750c82653326ac77",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-eventmanager": "^3.3",
+                "laminas/laminas-zendframework-bridge": "^1.1",
+                "php": "^7.3 || ~8.0.0"
+            },
+            "conflict": {
+                "phpspec/prophecy": "<1.9.0"
+            },
+            "replace": {
+                "zendframework/zend-code": "^3.4.1"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.10.4",
+                "ext-phar": "*",
+                "laminas/laminas-coding-standard": "^1.0.0",
+                "laminas/laminas-stdlib": "^3.3.0",
+                "phpunit/phpunit": "^9.4.2"
+            },
+            "suggest": {
+                "doctrine/annotations": "Doctrine\\Common\\Annotations >=1.0 for annotation features",
+                "laminas/laminas-stdlib": "Laminas\\Stdlib component"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Code\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Extensions to the PHP Reflection API, static code scanning, and code generation",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "code",
+                "laminas"
+            ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-code/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-code/issues",
+                "rss": "https://github.com/laminas/laminas-code/releases.atom",
+                "source": "https://github.com/laminas/laminas-code"
+            },
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2020-11-30T20:16:31+00:00"
+        },
+        {
+            "name": "laminas/laminas-eventmanager",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-eventmanager.git",
+                "reference": "1940ccf30e058b2fd66f5a9d696f1b5e0027b082"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-eventmanager/zipball/1940ccf30e058b2fd66f5a9d696f1b5e0027b082",
+                "reference": "1940ccf30e058b2fd66f5a9d696f1b5e0027b082",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^7.3 || ^8.0"
+            },
+            "replace": {
+                "zendframework/zend-eventmanager": "^3.2.1"
+            },
+            "require-dev": {
+                "container-interop/container-interop": "^1.1",
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-stdlib": "^2.7.3 || ^3.0",
+                "phpbench/phpbench": "^0.17.1",
+                "phpunit/phpunit": "^8.5.8"
+            },
+            "suggest": {
+                "container-interop/container-interop": "^1.1, to use the lazy listeners feature",
+                "laminas/laminas-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev",
+                    "dev-develop": "3.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\EventManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Trigger and listen to events within a PHP application",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "event",
+                "eventmanager",
+                "events",
+                "laminas"
+            ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-eventmanager/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-eventmanager/issues",
+                "rss": "https://github.com/laminas/laminas-eventmanager/releases.atom",
+                "source": "https://github.com/laminas/laminas-eventmanager"
+            },
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2020-08-25T11:10:44+00:00"
+        },
+        {
+            "name": "laminas/laminas-zendframework-bridge",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-zendframework-bridge.git",
+                "reference": "6ede70583e101030bcace4dcddd648f760ddf642"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/6ede70583e101030bcace4dcddd648f760ddf642",
+                "reference": "6ede70583e101030bcace4dcddd648f760ddf642",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.1 || ^9.3",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "laminas": {
+                    "module": "Laminas\\ZendFrameworkBridge"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/autoload.php"
+                ],
+                "psr-4": {
+                    "Laminas\\ZendFrameworkBridge\\": "src//"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Alias legacy ZF class names to Laminas Project equivalents.",
+            "keywords": [
+                "ZendFramework",
+                "autoloading",
+                "laminas",
+                "zf"
+            ],
+            "support": {
+                "forum": "https://discourse.laminas.dev/",
+                "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
+                "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
+                "source": "https://github.com/laminas/laminas-zendframework-bridge"
+            },
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2020-09-14T14:23:00+00:00"
         },
         {
             "name": "laravel/fortify",
@@ -1752,6 +2224,74 @@
             "time": "2020-08-23T07:39:11+00:00"
         },
         {
+            "name": "league/fractal",
+            "version": "0.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/fractal.git",
+                "reference": "a0b350824f22fc2fdde2500ce9d6851a3f275b0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/a0b350824f22fc2fdde2500ce9d6851a3f275b0e",
+                "reference": "a0b350824f22fc2fdde2500ce9d6851a3f275b0e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.5",
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "~0.9",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5",
+                "zendframework/zend-paginator": "~2.3"
+            },
+            "suggest": {
+                "illuminate/pagination": "The Illuminate Pagination component.",
+                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+                "zendframework/zend-paginator": "Zend Framework Paginator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Fractal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Sturgeon",
+                    "email": "me@philsturgeon.uk",
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handle the output of complex data structures ready for API output.",
+            "homepage": "http://fractal.thephpleague.com/",
+            "keywords": [
+                "api",
+                "json",
+                "league",
+                "rest"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/fractal/issues",
+                "source": "https://github.com/thephpleague/fractal/tree/master"
+            },
+            "time": "2017-06-12T11:04:56+00:00"
+        },
+        {
             "name": "league/mime-type-detection",
             "version": "1.5.1",
             "source": {
@@ -1877,6 +2417,391 @@
                 }
             ],
             "time": "2020-12-01T20:51:29+00:00"
+        },
+        {
+            "name": "maatwebsite/excel",
+            "version": "3.1.26",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
+                "reference": "66f7c9584304ad0b6a267a5d8ffbfa2ff4272e85"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/66f7c9584304ad0b6a267a5d8ffbfa2ff4272e85",
+                "reference": "66f7c9584304ad0b6a267a5d8ffbfa2ff4272e85",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/support": "5.8.*|^6.0|^7.0|^8.0",
+                "php": "^7.0|^8.0",
+                "phpoffice/phpspreadsheet": "^1.15"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Maatwebsite\\Excel\\ExcelServiceProvider"
+                    ],
+                    "aliases": {
+                        "Excel": "Maatwebsite\\Excel\\Facades\\Excel"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Maatwebsite\\Excel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Patrick Brouwers",
+                    "email": "patrick@maatwebsite.nl"
+                }
+            ],
+            "description": "Supercharged Excel exports and imports in Laravel",
+            "keywords": [
+                "PHPExcel",
+                "batch",
+                "csv",
+                "excel",
+                "export",
+                "import",
+                "laravel",
+                "php",
+                "phpspreadsheet"
+            ],
+            "support": {
+                "issues": "https://github.com/Maatwebsite/Laravel-Excel/issues",
+                "source": "https://github.com/Maatwebsite/Laravel-Excel/tree/3.1.26"
+            },
+            "funding": [
+                {
+                    "url": "https://laravel-excel.com/commercial-support",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/patrickbrouwers",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-27T16:17:38+00:00"
+        },
+        {
+            "name": "maennchen/zipstream-php",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maennchen/ZipStream-PHP.git",
+                "reference": "c4c5803cc1f93df3d2448478ef79394a5981cc58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/c4c5803cc1f93df3d2448478ef79394a5981cc58",
+                "reference": "c4c5803cc1f93df3d2448478ef79394a5981cc58",
+                "shasum": ""
+            },
+            "require": {
+                "myclabs/php-enum": "^1.5",
+                "php": ">= 7.1",
+                "psr/http-message": "^1.0",
+                "symfony/polyfill-mbstring": "^1.0"
+            },
+            "require-dev": {
+                "ext-zip": "*",
+                "guzzlehttp/guzzle": ">= 6.3",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": ">= 7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ZipStream\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Duncan",
+                    "email": "pabs@pablotron.org"
+                },
+                {
+                    "name": "Jonatan Männchen",
+                    "email": "jonatan@maennchen.ch"
+                },
+                {
+                    "name": "Jesse Donat",
+                    "email": "donatj@gmail.com"
+                },
+                {
+                    "name": "András Kolesár",
+                    "email": "kolesar@kolesar.hu"
+                }
+            ],
+            "description": "ZipStream is a library for dynamically streaming dynamic zip files from PHP without writing to the disk at all on the server.",
+            "keywords": [
+                "stream",
+                "zip"
+            ],
+            "support": {
+                "issues": "https://github.com/maennchen/ZipStream-PHP/issues",
+                "source": "https://github.com/maennchen/ZipStream-PHP/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/zipstream",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-05-30T13:11:16+00:00"
+        },
+        {
+            "name": "markbaker/complex",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarkBaker/PHPComplex.git",
+                "reference": "9999f1432fae467bc93c53f357105b4c31bb994c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/9999f1432fae467bc93c53f357105b4c31bb994c",
+                "reference": "9999f1432fae467bc93c53f357105b4c31bb994c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phploc/phploc": "^4.0",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.3",
+                "sebastian/phpcpd": "^4.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Complex\\": "classes/src/"
+                },
+                "files": [
+                    "classes/src/functions/abs.php",
+                    "classes/src/functions/acos.php",
+                    "classes/src/functions/acosh.php",
+                    "classes/src/functions/acot.php",
+                    "classes/src/functions/acoth.php",
+                    "classes/src/functions/acsc.php",
+                    "classes/src/functions/acsch.php",
+                    "classes/src/functions/argument.php",
+                    "classes/src/functions/asec.php",
+                    "classes/src/functions/asech.php",
+                    "classes/src/functions/asin.php",
+                    "classes/src/functions/asinh.php",
+                    "classes/src/functions/atan.php",
+                    "classes/src/functions/atanh.php",
+                    "classes/src/functions/conjugate.php",
+                    "classes/src/functions/cos.php",
+                    "classes/src/functions/cosh.php",
+                    "classes/src/functions/cot.php",
+                    "classes/src/functions/coth.php",
+                    "classes/src/functions/csc.php",
+                    "classes/src/functions/csch.php",
+                    "classes/src/functions/exp.php",
+                    "classes/src/functions/inverse.php",
+                    "classes/src/functions/ln.php",
+                    "classes/src/functions/log2.php",
+                    "classes/src/functions/log10.php",
+                    "classes/src/functions/negative.php",
+                    "classes/src/functions/pow.php",
+                    "classes/src/functions/rho.php",
+                    "classes/src/functions/sec.php",
+                    "classes/src/functions/sech.php",
+                    "classes/src/functions/sin.php",
+                    "classes/src/functions/sinh.php",
+                    "classes/src/functions/sqrt.php",
+                    "classes/src/functions/tan.php",
+                    "classes/src/functions/tanh.php",
+                    "classes/src/functions/theta.php",
+                    "classes/src/operations/add.php",
+                    "classes/src/operations/subtract.php",
+                    "classes/src/operations/multiply.php",
+                    "classes/src/operations/divideby.php",
+                    "classes/src/operations/divideinto.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker",
+                    "email": "mark@lange.demon.co.uk"
+                }
+            ],
+            "description": "PHP Class for working with complex numbers",
+            "homepage": "https://github.com/MarkBaker/PHPComplex",
+            "keywords": [
+                "complex",
+                "mathematics"
+            ],
+            "support": {
+                "issues": "https://github.com/MarkBaker/PHPComplex/issues",
+                "source": "https://github.com/MarkBaker/PHPComplex/tree/PHP8"
+            },
+            "time": "2020-08-26T10:42:07+00:00"
+        },
+        {
+            "name": "markbaker/matrix",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarkBaker/PHPMatrix.git",
+                "reference": "9567d9c4c519fbe40de01dbd1e4469dbbb66f46a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarkBaker/PHPMatrix/zipball/9567d9c4c519fbe40de01dbd1e4469dbbb66f46a",
+                "reference": "9567d9c4c519fbe40de01dbd1e4469dbbb66f46a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phploc/phploc": "^4.0",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.3",
+                "sebastian/phpcpd": "^4.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Matrix\\": "classes/src/"
+                },
+                "files": [
+                    "classes/src/functions/adjoint.php",
+                    "classes/src/functions/antidiagonal.php",
+                    "classes/src/functions/cofactors.php",
+                    "classes/src/functions/determinant.php",
+                    "classes/src/functions/diagonal.php",
+                    "classes/src/functions/identity.php",
+                    "classes/src/functions/inverse.php",
+                    "classes/src/functions/minors.php",
+                    "classes/src/functions/trace.php",
+                    "classes/src/functions/transpose.php",
+                    "classes/src/operations/add.php",
+                    "classes/src/operations/directsum.php",
+                    "classes/src/operations/subtract.php",
+                    "classes/src/operations/multiply.php",
+                    "classes/src/operations/divideby.php",
+                    "classes/src/operations/divideinto.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker",
+                    "email": "mark@demon-angel.eu"
+                }
+            ],
+            "description": "PHP Class for working with matrices",
+            "homepage": "https://github.com/MarkBaker/PHPMatrix",
+            "keywords": [
+                "mathematics",
+                "matrix",
+                "vector"
+            ],
+            "support": {
+                "issues": "https://github.com/MarkBaker/PHPMatrix/issues",
+                "source": "https://github.com/MarkBaker/PHPMatrix/tree/PHP8"
+            },
+            "time": "2020-08-28T17:11:00+00:00"
+        },
+        {
+            "name": "mediconesystems/livewire-datatables",
+            "version": "v0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MedicOneSystems/livewire-datatables.git",
+                "reference": "b0f3b3b9ee801d6870de898436090b27b2bc19c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MedicOneSystems/livewire-datatables/zipball/b0f3b3b9ee801d6870de898436090b27b2bc19c0",
+                "reference": "b0f3b3b9ee801d6870de898436090b27b2bc19c0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0",
+                "livewire/livewire": "^1.2|^2.0",
+                "maatwebsite/excel": "^3.1",
+                "php": "^7.2.5"
+            },
+            "require-dev": {
+                "laravel/legacy-factories": "^1.0.4",
+                "orchestra/testbench": "^4.0|5.0|6.0",
+                "phpunit/phpunit": "^8.0|9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mediconesystems\\LivewireDatatables\\LivewireDatatablesServiceProvider"
+                    ],
+                    "aliases": {
+                        "LivewireDatatables": "Mediconesystems\\LivewireDatatables\\LivewireDatatablesFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mediconesystems\\LivewireDatatables\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Salmon",
+                    "email": "mark.salmon@mediconesystems.com",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/mediconesystems/livewire-datatables",
+            "keywords": [
+                "livewire-datatables",
+                "mediconesystems"
+            ],
+            "support": {
+                "issues": "https://github.com/MedicOneSystems/livewire-datatables/issues",
+                "source": "https://github.com/MedicOneSystems/livewire-datatables/tree/v0.4.3"
+            },
+            "time": "2020-11-16T12:02:40+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -2029,6 +2954,125 @@
                 }
             ],
             "time": "2020-12-14T13:15:25+00:00"
+        },
+        {
+            "name": "morilog/jalali",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/morilog/jalali.git",
+                "reference": "7ea78b84ce3b5546b01217febb2fba4915dac5e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/morilog/jalali/zipball/7ea78b84ce3b5546b01217febb2fba4915dac5e5",
+                "reference": "7ea78b84ce3b5546b01217febb2fba4915dac5e5",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "3.*",
+                "nesbot/carbon": "^1.21 || ^2.0",
+                "php": "^7.0 | ^7.1 | ^7.2 | ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Morilog\\Jalali\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milad Rey",
+                    "email": "miladr@gmail.com"
+                },
+                {
+                    "name": "Morteza Parvini",
+                    "email": "m.parvini@outlook.com"
+                }
+            ],
+            "description": "This Package helps developers to easily work with Jalali (Shamsi or Iranian) dates in PHP applications, based on Jalali (Shamsi) DateTime class.",
+            "keywords": [
+                "Jalali",
+                "date",
+                "datetime",
+                "laravel",
+                "morilog"
+            ],
+            "support": {
+                "issues": "https://github.com/morilog/jalali/issues",
+                "source": "https://github.com/morilog/jalali/tree/v3.2.0"
+            },
+            "time": "2020-12-01T21:26:31+00:00"
+        },
+        {
+            "name": "myclabs/php-enum",
+            "version": "1.7.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/myclabs/php-enum.git",
+                "reference": "d178027d1e679832db9f38248fcc7200647dc2b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/d178027d1e679832db9f38248fcc7200647dc2b7",
+                "reference": "d178027d1e679832db9f38248fcc7200647dc2b7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7",
+                "squizlabs/php_codesniffer": "1.*",
+                "vimeo/psalm": "^3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MyCLabs\\Enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP Enum contributors",
+                    "homepage": "https://github.com/myclabs/php-enum/graphs/contributors"
+                }
+            ],
+            "description": "PHP Enum implementation",
+            "homepage": "http://github.com/myclabs/php-enum",
+            "keywords": [
+                "enum"
+            ],
+            "support": {
+                "issues": "https://github.com/myclabs/php-enum/issues",
+                "source": "https://github.com/myclabs/php-enum/tree/1.7.7"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mnapoli",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/myclabs/php-enum",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-11-14T18:14:52+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2312,6 +3356,106 @@
             "time": "2020-12-06T15:14:20+00:00"
         },
         {
+            "name": "phpoffice/phpspreadsheet",
+            "version": "1.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
+                "reference": "a8e8068b31b8119e1daa5b1eb5715a3a8ea8305f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/a8e8068b31b8119e1daa5b1eb5715a3a8ea8305f",
+                "reference": "a8e8068b31b8119e1daa5b1eb5715a3a8ea8305f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-dom": "*",
+                "ext-fileinfo": "*",
+                "ext-gd": "*",
+                "ext-iconv": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "ext-xml": "*",
+                "ext-xmlreader": "*",
+                "ext-xmlwriter": "*",
+                "ext-zip": "*",
+                "ext-zlib": "*",
+                "maennchen/zipstream-php": "^2.1",
+                "markbaker/complex": "^1.5|^2.0",
+                "markbaker/matrix": "^1.2|^2.0",
+                "php": "^7.2|^8.0",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0",
+                "psr/simple-cache": "^1.0"
+            },
+            "require-dev": {
+                "dompdf/dompdf": "^0.8.5",
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "jpgraph/jpgraph": "^4.0",
+                "mpdf/mpdf": "^8.0",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpunit/phpunit": "^8.5|^9.3",
+                "squizlabs/php_codesniffer": "^3.5",
+                "tecnickcom/tcpdf": "^6.3"
+            },
+            "suggest": {
+                "dompdf/dompdf": "Option for rendering PDF with PDF Writer (doesn't yet support PHP8)",
+                "jpgraph/jpgraph": "Option for rendering charts, or including charts with PDF or HTML Writers",
+                "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
+                "tecnickcom/tcpdf": "Option for rendering PDF with PDF Writer (doesn't yet support PHP8)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpOffice\\PhpSpreadsheet\\": "src/PhpSpreadsheet"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "https://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker",
+                    "homepage": "https://markbakeruk.net"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "https://rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                },
+                {
+                    "name": "Adrien Crivelli"
+                }
+            ],
+            "description": "PHPSpreadsheet - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "https://github.com/PHPOffice/PhpSpreadsheet",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "gnumeric",
+                "ods",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.15.0"
+            },
+            "time": "2020-10-11T13:20:59+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.7.5",
             "source": {
@@ -2586,6 +3730,61 @@
                 "source": "https://github.com/php-fig/http-client/tree/master"
             },
             "time": "2020-06-29T06:28:15+00:00"
+        },
+        {
+            "name": "psr/http-factory",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-factory.git",
+                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "psr/http-message": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "keywords": [
+                "factory",
+                "http",
+                "message",
+                "psr",
+                "psr-17",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-factory/tree/master"
+            },
+            "time": "2019-04-30T12:38:16+00:00"
         },
         {
             "name": "psr/http-message",
@@ -3025,6 +4224,260 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "shetabit/multipay",
+            "version": "v1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shetabit/multipay.git",
+                "reference": "4e1210b46435de3e20f91c35329e4357c3a66151"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shetabit/multipay/zipball/4e1210b46435de3e20f91c35329e4357c3a66151",
+                "reference": "4e1210b46435de3e20f91c35329e4357c3a66151",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.2",
+                "nesbot/carbon": "^1.39|^2.0",
+                "php": ">=7.2",
+                "ramsey/uuid": "^3.7|^3.8|^3.9|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0|^9.0",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shetabit\\Multipay\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahdi Khanzadi",
+                    "email": "khanzadimahdi@gmail.com",
+                    "homepage": "https://github.com/shetabit",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Payment Gateway Integration Package",
+            "homepage": "https://github.com/shetabit/multipay",
+            "keywords": [
+                "Bank",
+                "Meli",
+                "Payline",
+                "gateway",
+                "iranKish payment gateway",
+                "irankish",
+                "jahanPay payment gateway",
+                "jahanpay",
+                "jibit",
+                "jibit payment gateway",
+                "meli payment gateway",
+                "mellat",
+                "mellat payment gateway",
+                "melli",
+                "parsian",
+                "parsian payment gateway",
+                "pasargad",
+                "pasargad payment gateway",
+                "pay",
+                "pay payment gateway",
+                "payline payment gateway",
+                "payment",
+                "payment gateway",
+                "paypal",
+                "paypal payment gateway",
+                "php iranKish",
+                "php iranKish package",
+                "php jahanPay",
+                "php jahanPay package",
+                "php jibit",
+                "php jibit package",
+                "php meli",
+                "php meli package",
+                "php mellat",
+                "php mellat package",
+                "php melli bank payment package",
+                "php parsian",
+                "php parsian package",
+                "php pasargad",
+                "php pasargad package",
+                "php pay",
+                "php pay package",
+                "php payline",
+                "php payline package",
+                "php payment gateway",
+                "php payment package",
+                "php paypal",
+                "php paypal package",
+                "php sadad",
+                "php sadad package",
+                "php saderat",
+                "php saderat package",
+                "php saman",
+                "php saman package",
+                "php shaparak",
+                "php shaparak package",
+                "php zarinpal",
+                "php zarinpal package",
+                "sadad",
+                "sadad payment gateway",
+                "saderat",
+                "saderat payment gateway",
+                "saman",
+                "saman payment gateway",
+                "shaparak",
+                "shaparak payment gateway",
+                "shetabit",
+                "zarinpal",
+                "zarinpal payment gateway"
+            ],
+            "support": {
+                "issues": "https://github.com/shetabit/multipay/issues",
+                "source": "https://github.com/shetabit/multipay/tree/v1.1.5"
+            },
+            "time": "2020-12-17T06:18:57+00:00"
+        },
+        {
+            "name": "shetabit/payment",
+            "version": "v4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shetabit/payment.git",
+                "reference": "d7fa9e0ae2195e9d81f7533e7da0c80c1cd62fe2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shetabit/payment/zipball/d7fa9e0ae2195e9d81f7533e7da0c80c1cd62fe2",
+                "reference": "d7fa9e0ae2195e9d81f7533e7da0c80c1cd62fe2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-soap": "*",
+                "illuminate/broadcasting": "^5.0|^6.0|^7.0|^8.0",
+                "illuminate/support": "^5.0|^6.0|^7.0|^8.0",
+                "php": ">=7.2",
+                "shetabit/multipay": "^1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.0|^4.0|^5.0",
+                "phpunit/phpunit": "^6.0|^7.0|^8.0|^9.0",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Shetabit\\Payment\\Provider\\PaymentServiceProvider"
+                    ],
+                    "aliases": {
+                        "Payment": "Shetabit\\Payment\\Facade\\Payment"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shetabit\\Payment\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahdi Khanzadi",
+                    "email": "khanzadimahdi@gmail.com",
+                    "homepage": "https://github.com/shetabit",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Payment Gateway Integration Package",
+            "homepage": "https://github.com/shetabit/payment",
+            "keywords": [
+                "Bank",
+                "Meli",
+                "Payline",
+                "gateway",
+                "iranKish payment gateway",
+                "irankish",
+                "jahanPay payment gateway",
+                "jahanpay",
+                "jibit",
+                "jibit payment gateway",
+                "laravel iranKish",
+                "laravel iranKish package",
+                "laravel jahanPay",
+                "laravel jahanPay package",
+                "laravel jibit",
+                "laravel jibit package",
+                "laravel meli",
+                "laravel meli package",
+                "laravel mellat",
+                "laravel mellat package",
+                "laravel melli bank payment package",
+                "laravel parsian",
+                "laravel parsian package",
+                "laravel pasargad",
+                "laravel pasargad package",
+                "laravel pay",
+                "laravel pay package",
+                "laravel payline",
+                "laravel payline package",
+                "laravel payment gateway",
+                "laravel payment package",
+                "laravel paypal",
+                "laravel paypal package",
+                "laravel sadad",
+                "laravel sadad package",
+                "laravel saderat",
+                "laravel saderat package",
+                "laravel saman",
+                "laravel saman package",
+                "laravel shaparak",
+                "laravel shaparak package",
+                "laravel zarinpal",
+                "laravel zarinpal package",
+                "meli payment gateway",
+                "mellat",
+                "mellat payment gateway",
+                "melli",
+                "parsian",
+                "parsian payment gateway",
+                "pasargad",
+                "pasargad payment gateway",
+                "pay",
+                "pay payment gateway",
+                "payline payment gateway",
+                "payment",
+                "payment gateway",
+                "paypal",
+                "paypal payment gateway",
+                "sadad",
+                "sadad payment gateway",
+                "saderat",
+                "saderat payment gateway",
+                "saman",
+                "saman payment gateway",
+                "shaparak",
+                "shaparak payment gateway",
+                "shetabit",
+                "zarinpal",
+                "zarinpal payment gateway"
+            ],
+            "support": {
+                "issues": "https://github.com/shetabit/payment/issues",
+                "source": "https://github.com/shetabit/payment/tree/v4.0.1"
+            },
+            "time": "2020-09-03T06:04:07+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
