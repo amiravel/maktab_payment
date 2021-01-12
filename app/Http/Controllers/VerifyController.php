@@ -22,6 +22,8 @@ class VerifyController extends Controller
             'payment_id' => 'required|integer|exists:payments,id'
         ]);
 
+        dd($request->dd());
+
         if($validate->fails()) {
             return view('verify.failed')
                 ->with('message', 'خطا در ورودی اطلاعات');
@@ -32,7 +34,7 @@ class VerifyController extends Controller
 
         try {
             $receipt = \Shetabit\Payment\Facade\Payment::amount(($payment->drive['value'] == 'pasargad') ? ($payment->amount * 10) : $payment->amount)
-                ->transactionId($payment->authority)
+                ->transactionId($payment->logs()->first()->authority)
                 ->verify();
 
             $payment->logs()->create([
