@@ -22,8 +22,6 @@ class VerifyController extends Controller
             'payment_id' => 'required|integer|exists:payments,id'
         ]);
 
-        dd($request->dd());
-
         if($validate->fails()) {
             return view('verify.failed')
                 ->with('message', 'خطا در ورودی اطلاعات');
