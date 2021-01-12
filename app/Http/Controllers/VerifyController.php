@@ -31,7 +31,8 @@ class VerifyController extends Controller
         $payment = Payment::findOrFail($payment_id);
 
         try {
-            $receipt = \Shetabit\Payment\Facade\Payment::amount(($payment->drive['value'] == 'pasargad') ? ($payment->amount * 10) : $payment->amount)
+            $receipt = \Shetabit\Payment\Facade\Payment::via($payment->drive['value'])
+                ->amount(($payment->drive['value'] == 'pasargad') ? ($payment->amount * 10) : $payment->amount)
                 ->transactionId($payment->logs()->first()->authority)
                 ->verify();
 
