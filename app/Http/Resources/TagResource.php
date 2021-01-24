@@ -20,7 +20,7 @@ class TagResource extends JsonResource
             'parent' => $this->when(!is_null($this->parent), $this->parent),
             'name' => $this->name,
             'children' => $this->when($this->children()->count() > 0, new TagCollection($this->children)),
-            'dirve' => $this->when($this->drive->id, new DriveResource($this->drive))
+            'dirve' => $this->when($this->drive()->exists(), new DriveResource($this->drive()->first()))
         ];
     }
 }
