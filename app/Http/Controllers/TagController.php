@@ -21,31 +21,23 @@ class TagController extends Controller
             ->pluck('name', 'id')
             ->all();
 
-        $drives = Drive::all();
+        $drives = Drive::query()->pluck('name', 'id');
 
         return view('tags.create', compact('tags', 'drives'));
     }
 
     public function store(Request $request)
     {
+        /**
+         * @var $tag Tag
+         */
         $tag = Tag::create([
             'parent' => $request->get('parent', null),
             'name' => $request->get('name'),
         ]);
 
-        if ($request->has('drive')) {
-            if (array_key_exists('id', $request->get('drive'))) {
-                Drive::findOrFail($request->get('drive')['id'])
-                    ->replicate(['tag_id'])
-                    ->fill(['tag_id' => $tag->id])
-                    ->save();
-            } else {
-                $drive = Drive::create([
-                    'tag_id' => $tag->id,
-                    'name' => $request->get('drive')['name'],
-                    'value' => $request->get('drive')['value'],
-                ]);
-            }
+        if (!empty($request->get('drive_id'))) {
+            $tag->drive()->sync($request->get('drive_id'));
         }
 
         return redirect()->route('tags.index');
@@ -61,6 +53,29 @@ class TagController extends Controller
         $drives = Drive::all();
 
         return view('tags.show', compact('tag', 'tags', 'drives'));
+    }
+
+    public function edit(Tag $tag)
+    {
+        $tags = Tag::query()
+            ->whereNull('parent')
+            ->pluck('name', 'id')
+            ->all();
+
+        $drives = Drive::query()->pluck('name', 'id');
+
+        return view('tags.edit', compact('tag', 'tags', 'drives'));
+    }
+
+    public function update(Tag $tag, Request $request)
+    {
+        $tag->update($request->only(['name', 'parent']));
+
+        if (!empty($request->get('drive_id'))) {
+            $tag->drive()->sync($request->get('drive_id'));
+        }
+
+        return redirect()->route('tags.index');
     }
 
     public function all()

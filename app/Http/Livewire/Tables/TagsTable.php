@@ -12,6 +12,7 @@ class TagsTable extends LivewireDatatable
     public function builder()
     {
         return Tag::query()
+            ->with(['drive'])
             ->withCount('children');
     }
 
@@ -27,11 +28,18 @@ class TagsTable extends LivewireDatatable
             NumberColumn::name('children.id:count')
                 ->label('Children Count'),
 
+            Column::name('drive.name')
+                ->label('Drive'),
+
             Column::name('created_at')
                 ->label('Created At')
                 ->callback(['created_at'], function ($created_at) {
                     return jdate($created_at);
                 }),
+
+            Column::callback(['id'], function ($id) {
+                return view('tags.actions', ['id' => $id]);
+            })
         ];
     }
 }

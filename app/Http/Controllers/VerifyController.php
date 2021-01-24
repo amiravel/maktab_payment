@@ -31,8 +31,8 @@ class VerifyController extends Controller
         $payment = Payment::findOrFail($payment_id);
 
         try {
-            $receipt = \Shetabit\Payment\Facade\Payment::via($payment->drive['value'])
-                ->amount(($payment->drive['value'] == 'pasargad') ? ($payment->amount * 10) : $payment->amount)
+            $receipt = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
+                ->amount(($payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount)
                 ->transactionId($payment->logs()->first()->authority)
                 ->verify();
 
@@ -46,8 +46,6 @@ class VerifyController extends Controller
 
             return view('verify.success')
                 ->with('payment', $payment);
-
-            return $receipt->getReferenceId();
         } catch (InvalidPaymentException $exception) {
             $payment->logs()->updateOrCreate([
                 'status' => $exception->getCode(),

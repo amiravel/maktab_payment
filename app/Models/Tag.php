@@ -34,10 +34,7 @@ class Tag extends Model
 
     public function drive()
     {
-        return $this->hasOne(Drive::class)->withDefault([
-            'name' => 'زرین پال',
-            'value' => 'zarinpal'
-        ]);
+        return $this->belongsToMany(Drive::class);
     }
 
     protected function serializeDate($date)

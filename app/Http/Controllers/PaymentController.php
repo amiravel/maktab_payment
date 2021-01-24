@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Payment\PaymentMarkAsRead;
 use App\Http\Requests\CreatePaymentRequest;
 use App\Models\Payment;
 use App\Models\Tag;
@@ -14,9 +15,7 @@ class PaymentController extends Controller
 
     public function index()
     {
-        $payments = Payment::latest()->paginate();
-
-        return view('payments.index', compact('payments'));
+        return view('payments.index');
     }
 
     public function create()
@@ -36,26 +35,24 @@ class PaymentController extends Controller
          * @var Payment $payment
          */
         $payment = Payment::create($request->only([
-            'user_id', 'name', 'email', 'mobile', 'description', 'amount', 'callback'
+            'user_id', 'name', 'email', 'mobile', 'description', 'amount', 'callback', 'information'
         ]));
 
         if ($request->has('tags')) {
             $payment->tags()->sync($request->get('tags'));
         }
 
-        if (!in_array($payment->drive['value'], ['pasargad', 'zarinpal'])) {
+        if (!in_array($payment->drive->value, ['pasargad', 'zarinpal'])) {
             DB::rollBack();
             return back()
                 ->with('message', 'درگاه پرداخت وارد شده معتبر نیست.');
         }
 
         $invoice = new Invoice();
-        $invoice->amount(($payment->drive['value'] == 'pasargad') ? ($payment->amount * 10) : $payment->amount);
-        $invoice->detail($request->only([
-            'name', 'email', 'mobile', 'description'
-        ]));
+        $invoice->amount(($payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount);
+        $invoice->detail($payment->only(['name', 'email', 'mobile', 'description']));
 
-        $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive['value'])
+        $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
             ->callbackUrl(route('verify', ['payment_id' => $payment->id]))
             ->purchase($invoice, function ($driver, $transactionId) use ($payment) {
                 $payment->logs()->create([
@@ -73,6 +70,7 @@ class PaymentController extends Controller
 
     public function show(Payment $payment)
     {
+        PaymentMarkAsRead::run($payment);
         return view('payments.show', compact('payment'));
     }
 

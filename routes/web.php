@@ -14,4 +14,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         ->except(['show']);
 
     Route::resource('tags', \App\Http\Controllers\TagController::class);
+    Route::resource('drives', \App\Http\Controllers\DriveController::class)
+        ->except(['show', 'destroy']);
 });

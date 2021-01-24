@@ -10,11 +10,11 @@ class Drive extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tag_id', 'name', 'value'
+        'name', 'value'
     ];
 
-    public function tag()
+    public function tags()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
 }

@@ -1,4 +1,5 @@
 module.exports = {
+    important: true,
     purge: [
         './resources/**/*.blade.php',
         './resources/**/*.js',
@@ -9,5 +10,6 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
         require('tailwindcss-rtl'),
+        require('tailwindcss-tables')(),
     ],
 }

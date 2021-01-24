@@ -25,13 +25,14 @@ class CreatePaymentRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
             'mobile' => 'nullable|min:11',
             'description' => 'required|string',
             'tags' => 'required|array',
             'tags.*' => 'required|integer|exists:tags,id',
             'amount' => 'required|integer|min:10000',
-            'callback' => 'required|url'
+            'callback' => 'required|url',
+            'information' => 'nullable|array'
         ];
     }
 }
