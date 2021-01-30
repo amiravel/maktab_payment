@@ -12,18 +12,35 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
-            <div class="space-x-3">
+            <div class="space-x-3 space-x-reverse">
                 @foreach($payment->tags as $tag)
                     <span class="inline-block rounded-full text-white bg-indigo-500 px-2 py-1 text-xs font-bold">
                         {{ $tag->name }}
                     </span>
                 @endforeach
+                <span class="inline-block rounded-full text-white bg-indigo-500 px-2 py-1 text-xs font-bold">
+                    پرداخت از درگاه {{ $payment->drive->name }}
+                </span>
             </div>
 
-            <div class="space-x-3">
-                <span class="inline-block rounded-full text-white bg-indigo-500 px-2 py-1 text-xs font-bold">
-                    {{ $payment->drive->name }}
+            <div class="space-x-3 space-x-reverse">
+                <span class="font-bold">
+                    عملیات
                 </span>
+
+                <form class="inline-block" action="{{ route('payments.update', $payment) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="action" value="unread">
+                    <button type="submit" class="btn btn--primary">تغییر وضعیت به خوانده نشده</button>
+                </form>
+
+                <form class="inline-block" action="{{ route('payments.update', $payment) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="action" value="verify">
+                    <button type="submit" class="btn btn--primary">بررسی مجدد تایید پرداخت</button>
+                </form>
             </div>
 
             <div class="grid grid-flow-col auto-cols-auto gap-8">

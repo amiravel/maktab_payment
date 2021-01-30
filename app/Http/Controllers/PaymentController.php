@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Payment\PaymentMarkAsRead;
+use App\Actions\Payment\PaymentMarkAsUnRead;
+use App\Actions\Payment\PaymentVerify;
 use App\Http\Requests\CreatePaymentRequest;
 use App\Models\Payment;
 use App\Models\Tag;
@@ -81,6 +83,14 @@ class PaymentController extends Controller
 
     public function update(Payment $payment, Request $request)
     {
+        if ($request->has('action') && $request->get('action') == 'unread') {
+            PaymentMarkAsUnRead::run($payment);
+            return redirect()->route('payments.index');
+        }
 
+        if ($request->has('action') && $request->get('action') == 'verify') {
+            PaymentVerify::run($payment);
+            return back();
+        }
     }
 }
