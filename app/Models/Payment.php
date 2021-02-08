@@ -66,6 +66,14 @@ class Payment extends Model
             ]);
     }
 
+    public function markAsUnRead()
+    {
+        if ($this->read)
+            $this->update([
+                'read' => false
+            ]);
+    }
+
     public function status($type): bool
     {
         switch ($type) {

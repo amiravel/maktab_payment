@@ -21,8 +21,6 @@ class PaymentVerify
                 ->transactionId($payment->logs()->first()->authority)
                 ->verify();
 
-            info($receipt);
-
             PaymentLog::withoutEvents(function () use ($payment, $receipt) {
                 $payment->logs()->create([
                     'status' => 100,
@@ -33,9 +31,6 @@ class PaymentVerify
                 ]);
             });
         } catch (InvalidPaymentException $exception) {
-
-            info($exception);
-
             PaymentLog::withoutEvents(function () use ($payment, $exception) {
                 $payment->logs()->create([
                     'status' => $exception->getCode(),

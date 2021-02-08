@@ -23,6 +23,7 @@
         "lorisleiva/laravel-actions": "^2.0",
         "mediconesystems/livewire-datatables": "^0.4.3",
         "morilog/jalali": "^3.2",
+        "rollbar/rollbar-laravel": "^7.0",
         "shetabit/payment": "^4.0",
         "spatie/laravel-query-builder": "^3.3"
     },

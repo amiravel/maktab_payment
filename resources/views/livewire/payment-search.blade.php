@@ -25,7 +25,7 @@
                 <label for="statuses" class="block text-sm font-medium text-gray-700">{{ __('Statuses') }}</label>
                 <select id="statuses" name="statuses" multiple wire:model="search.statuses"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    <option value="created">{{ __('Created') }}</option>
+                    {{--<option value="created">{{ __('Created') }}</option>--}}
                     <option value="successful">{{ __('Successful') }}</option>
                     <option value="error">{{ __('Error') }}</option>
                 </select>
@@ -79,8 +79,8 @@
                 <th>مبلغ</th>
                 <th>ساخته شده در</th>
                 <th>آخرین بروزرسانی</th>
-                <th>ساخته شده</th>
-                <th>پرداخت شده</th>
+                {{--<th>ساخته شده</th>--}}
+                <th>پرداخت</th>
                 <th>خطا</th>
                 <th>درگاه</th>
                 <th>تگ‌ها</th>
@@ -99,9 +99,9 @@
                     <td>{{ number_format($payment->amount) }}</td>
                     <td>{{ jdate($payment->created_at)->format('d M y - H:i') }}</td>
                     <td>{{ jdate($payment->updated_at)->format('d M y - H:i') }}</td>
-                    <td>
+                    {{--<td>
                         <x-payment-status-icon :status="$payment->status('created')"/>
-                    </td>
+                    </td>--}}
                     <td>
                         <x-payment-status-icon :status="$payment->status('successful')"/>
                     </td>

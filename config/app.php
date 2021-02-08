@@ -167,6 +167,7 @@ return [
          */
         Flugg\Responder\ResponderServiceProvider::class,
         BenSampo\Enum\EnumServiceProvider::class,
+        Rollbar\Laravel\RollbarServiceProvider::class,
 
         /*
          * Application Service Providers...
