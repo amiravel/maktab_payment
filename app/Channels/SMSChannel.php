@@ -34,18 +34,13 @@ $payment->name عزیز
 #مکتب_شریف
 EOD;
 
-        $response = Http::get('http://textsms.ir/webservice/rest/sms_send', [
-            'api_key' => env('TEXT_SMS_API_KEY'),
-            'note_arr' => $message,
-            'receiver_number' => $payment->mobile,
-            'sender_number' => env('TEXT_SMS_NUMBER'),
-        ]);
-
-        info($response->handlerStats());
-
-        if($response->successful()) {
-            info(sprintf("Payment #%s: SMS response: %s", $payment->id, $response->body()));
-        }
+        $response = Http::contentType('Content-Type: text/html; charset=utf-8')
+            ->get('http://textsms.ir/webservice/rest/sms_send', [
+                'api_key' => env('TEXT_SMS_API_KEY'),
+                'note_arr' => $message,
+                'receiver_number' => $payment->mobile,
+                'sender_number' => env('TEXT_SMS_NUMBER'),
+            ]);
 
         if ($response->failed()) {
             $paymentLog->notify(new InvoicePaid($paymentLog));
