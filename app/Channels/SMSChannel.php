@@ -38,15 +38,20 @@ EOD;
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
             'Accept-Encoding' => 'gzip, deflate, br'
-        ])->get('http://textsms.ir/webservice/rest/sms_send', [
-            'api_key' => env('TEXT_SMS_API_KEY'),
-            'note_arr' => $message,
+        ])->get('http://textsms.ir/send_via_get/send_sms.php', [
+            'username' => env('TEXT_SMS_USERNAME'),
+            'password' => env('TEXT_SMS_PASSWORD'),
+            'note' => $message,
             'receiver_number' => $payment->mobile,
             'sender_number' => env('TEXT_SMS_NUMBER'),
         ]);
 
-        if ($response->failed()) {
-            $paymentLog->notify(new InvoicePaid($paymentLog));
+        info($payment->id . $response->body());
+
+        if (!$response->json('result')) {
+            $paymentLog->notify(
+                (new InvoicePaid($paymentLog))->delay(now()->addSeconds(10))
+            );
         }
     }
 }
