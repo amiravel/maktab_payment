@@ -38,7 +38,7 @@ EOD;
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
             'Accept-Encoding' => 'gzip, deflate, br'
-        ])->get('http://textsms.ir/send_via_get/send_sms.php', [
+        ])->get('http://textsms.ir/webservice/rest/sms_send', [
             'api_key' => env('TEXT_SMS_API_KEY'),
             'note_arr' => $message,
             'receiver_number' => $payment->mobile,
