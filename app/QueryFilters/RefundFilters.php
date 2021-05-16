@@ -25,4 +25,9 @@ class RefundFilters extends QueryFilters
     {
         $this->query->where('mobile', 'like', "%$mobile%");
     }
+
+    public function refID($refID)
+    {
+        $this->query->where('refID', 'like', "%$refID%");
+    }
 }

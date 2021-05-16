@@ -168,4 +168,15 @@ class Payment extends Model
             $query2->where('id', $drive);
         });
     }
+
+    /**
+     * @param $query Builder
+     * @param $refund Refund
+     */
+    public function scopeRefund($query, Refund $refund)
+    {
+        $query->whereHas('logs', function ($query) use ($refund) {
+            return $query->where('refID', $refund->refID);
+        });
+    }
 }

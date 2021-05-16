@@ -116,7 +116,7 @@
                                         <thead class="bg-gray-50">
                                         @if($payment->logs()->count() > 0)
                                             <tr>
-                                                @foreach($payment->logs()->first()->makeHidden(['id', 'payment_id', 'updated_at'])->toArray() as $key => $value)
+                                                @foreach($payment->logs()->first()->makeHidden(['id', 'payment_id', 'raw_receipt', 'updated_at'])->toArray() as $key => $value)
                                                     <th scope="col"
                                                         class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                         {{ __(\Illuminate\Support\Str::studly($key)) }}
@@ -128,7 +128,7 @@
                                         <tbody class="bg-white divide-y divide-gray-200">
                                         @forelse($payment->logs as $log)
                                             <tr>
-                                                @foreach($log->makeHidden(['id', 'payment_id', 'updated_at'])->toArray() as $key => $value)
+                                                @foreach($log->makeHidden(['id', 'payment_id', 'raw_receipt', 'updated_at'])->toArray() as $key => $value)
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                         {{ $value }}
                                                     </td>

@@ -62,7 +62,13 @@ class RefundController extends Controller
                 $query->where('refID', $refund->refID);
             })->get();
 
-        return view('refunds.show', compact('refund', 'payments'));
+        if ($first = $payments->first())
+            $mask_card_number = $first->logs()
+                ->whereNotNull('raw_receipt')->first()->raw_receipt['MaskedCardNumber'] ?? false;
+        else
+            $mask_card_number = false;
+
+        return view('refunds.show', compact('refund', 'payments', 'mask_card_number'));
     }
 
     /**

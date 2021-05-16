@@ -94,8 +94,8 @@
                     <td>{{ $payment->id }}</td>
                     <td>{{ $payment->name }}</td>
                     <td class="select-all">{{ $payment->email }}</td>
-                    <td class="select-all">{{ $payment->mobile }}</td>
-                    <td>{{ number_format($payment->amount) }} {{ __('Toman') }}</td>
+                    <td class="select-all">{{ $payment->mobile->getPhoneNumberInstance()->getNationalNumber() }}</td>
+                    <td>{{ number_format($payment->amount) }}</td>
                     <td>{{ jdate($payment->created_at) }}</td>
                     {{--<td>{{ jdate($payment->updated_at)->format('d M y - H:i') }}</td>--}}
                     {{--<td>

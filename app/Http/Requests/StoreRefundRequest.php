@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\CardNumber;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRefundRequest extends FormRequest
 {
@@ -26,11 +26,11 @@ class StoreRefundRequest extends FormRequest
     {
         return [
             'name' => 'string',
-            'mobile' => 'required|digits:11',
+            'mobile' => ['required', Rule::phone()->detect()->mobile()],
             'email' => 'required|email',
             'refID' => 'required|numeric',
             'card_number' => ['required', 'digits:16'],
-            'iban' => 'digits:24',
+            'iban' => 'required|digits:24',
             'amount' => 'required'
         ];
     }

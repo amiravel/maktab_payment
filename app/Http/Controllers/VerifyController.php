@@ -36,14 +36,16 @@ class VerifyController extends Controller
                 ->transactionId($payment->logs()->first()->authority)
                 ->verify();
 
-            info($request->getDetails());
-
-            $payment->logs()->create([
+            $payment->logs()->updateOrCreate([
+                'authority' => $payment->logs()->first()->authority,
+                'refID' => $receipt->getReferenceId(),
+            ], [
                 'status' => 100,
                 'type' => 'after',
                 'authority' => $payment->logs()->first()->authority,
                 'message' => 'پرداخت با موفقیت انجام شد.',
                 'refID' => $receipt->getReferenceId(),
+                'raw_receipt' => $receipt->getDetails() ?? []
             ]);
 
             return view('verify.success')
