@@ -6,6 +6,7 @@ use Cerbero\QueryFilters\FiltersRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Propaganistas\LaravelPhone\Casts\RawPhoneNumberCast;
 
 class Payment extends Model
 {
@@ -23,6 +24,7 @@ class Payment extends Model
     protected $casts = [
         'amount' => 'integer',
         'information' => 'array',
+        'mobile' => RawPhoneNumberCast::class . ':country_field',
     ];
 
     public function setDescriptionAttribute($value)

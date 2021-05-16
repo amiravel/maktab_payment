@@ -78,7 +78,7 @@
                 <th>موبایل</th>
                 <th>مبلغ</th>
                 <th>ساخته شده در</th>
-                <th>آخرین بروزرسانی</th>
+                {{--<th>آخرین بروزرسانی</th>--}}
                 {{--<th>ساخته شده</th>--}}
                 <th>پرداخت</th>
                 <th>خطا</th>
@@ -90,15 +90,14 @@
             </thead>
             <tbody>
             @forelse($payments as $index => $payment)
-                <tr class="@if(!$payment->read) font-bold @endif"
-                    onclick="toggleRow(this)">
+                <tr class="@if(!$payment->read) font-bold @endif">
                     <td>{{ $payment->id }}</td>
                     <td>{{ $payment->name }}</td>
                     <td class="select-all">{{ $payment->email }}</td>
                     <td class="select-all">{{ $payment->mobile }}</td>
-                    <td>{{ number_format($payment->amount) }}</td>
-                    <td>{{ jdate($payment->created_at)->format('d M y - H:i') }}</td>
-                    <td>{{ jdate($payment->updated_at)->format('d M y - H:i') }}</td>
+                    <td>{{ number_format($payment->amount) }} {{ __('Toman') }}</td>
+                    <td>{{ jdate($payment->created_at) }}</td>
+                    {{--<td>{{ jdate($payment->updated_at)->format('d M y - H:i') }}</td>--}}
                     {{--<td>
                         <x-payment-status-icon :status="$payment->status('created')"/>
                     </td>--}}
@@ -116,7 +115,7 @@
                     </td>
                     <td class="select-all">{{ $payment->referenceID }}</td>
                     <td>
-                        <a href="{{ route('payments.show', $payment) }}" class="btn btn--primary">مشاهده</a>
+                        <a href="{{ route('payments.show', $payment) }}" class="btn btn--primary py-1">مشاهده</a>
                     </td>
                 </tr>
             @empty
@@ -125,12 +124,6 @@
                 </tr>
             @endforelse
             </tbody>
-            <tfoot>
-            <td>{{ $payments->count() }}</td>
-            <td colspan="3"></td>
-            <td>{{ number_format($payments->sum('amount')) }}</td>
-            <td colspan="9"></td>
-            </tfoot>
         </table>
 
         {{ $payments->links() }}

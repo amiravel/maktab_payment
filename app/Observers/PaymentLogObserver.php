@@ -17,7 +17,8 @@ class PaymentLogObserver
     {
         // TODO: changed to dynamic tags id
         if (count(array_diff([134, 131], $paymentLog->payment->tags->pluck('id')->toArray())) < 2)
-            if ($paymentLog->payment->status('successful'))
+            if ($paymentLog->payment->status('successful') && $paymentLog->payment->mobile->isOfCountry('IR')) {
                 $paymentLog->notify(new InvoicePaid($paymentLog));
+            }
     }
 }

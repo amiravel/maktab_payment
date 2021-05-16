@@ -2,6 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import 'vazir.css';
+
 .btn {
     @apply text-base font-medium rounded-lg p-2;
 }

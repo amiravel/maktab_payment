@@ -36,6 +36,8 @@ class VerifyController extends Controller
                 ->transactionId($payment->logs()->first()->authority)
                 ->verify();
 
+            info($request->getDetails());
+
             $payment->logs()->create([
                 'status' => 100,
                 'type' => 'after',

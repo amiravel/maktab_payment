@@ -13,7 +13,11 @@ class PaymentLog extends Model
     use Notifiable;
 
     protected $fillable = [
-        'payment_id', 'status', 'type', 'authority', 'message', 'refID'
+        'payment_id', 'status', 'type', 'authority', 'message', 'refID', 'raw_receipt'
+    ];
+
+    protected $casts = [
+        'raw_receipt' => 'array'
     ];
 
     public function payment()
