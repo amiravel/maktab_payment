@@ -13,11 +13,11 @@
                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
-            <div class="col-span-4">
+            {{--<div class="col-span-4">
                 <label for="mobile" class="block text-sm font-medium text-gray-700">{{ __('Mobile') }}</label>
                 <input type="tel" name="mobile" id="mobile" autocomplete="tel" wire:model.lazy="search.mobile"
                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
+            </div>--}}
         </div>
 
         <div class="grid grid-cols-12 gap-6">
