@@ -24,7 +24,7 @@ class Payment extends Model
     protected $casts = [
         'amount' => 'integer',
         'information' => 'array',
-        'mobile' => RawPhoneNumberCast::class . ':country_field',
+        'mobile' => RawPhoneNumberCast::class . ':IR',
     ];
 
     public function setDescriptionAttribute($value)
