@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "@tailwindcss/forms": "^0.2.1",
+        "intl-tel-input": "^17.0.12",
         "tailwindcss-tables": "^0.4.0"
     }
 }

@@ -15,7 +15,7 @@
 
             <div class="col-span-4">
                 <label for="mobile" class="block text-sm font-medium text-gray-700">{{ __('Mobile') }}</label>
-                <input type="tel" name="mobile" id="mobile" autocomplete="tel" wire:model.lazy="search.mobile"
+                <input type="tel" id="mobile" name="mobile" wire:model.lazy="search.mobile"
                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
         </div>
@@ -78,8 +78,6 @@
                 <th>موبایل</th>
                 <th>مبلغ</th>
                 <th>ساخته شده در</th>
-                {{--<th>آخرین بروزرسانی</th>--}}
-                {{--<th>ساخته شده</th>--}}
                 <th>پرداخت</th>
                 <th>خطا</th>
                 <th>درگاه</th>
@@ -94,13 +92,9 @@
                     <td>{{ $payment->id }}</td>
                     <td>{{ $payment->name }}</td>
                     <td class="select-all">{{ $payment->email }}</td>
-                    <td class="select-all">{{ $payment->mobile->getPhoneNumberInstance()->getNationalNumber() }}</td>
+                    <td class="select-all">{{ \Illuminate\Support\Str::replaceFirst("+98", '0', $payment->mobile) }}</td>
                     <td>{{ number_format($payment->amount) }}</td>
                     <td>{{ jdate($payment->created_at) }}</td>
-                    {{--<td>{{ jdate($payment->updated_at)->format('d M y - H:i') }}</td>--}}
-                    {{--<td>
-                        <x-payment-status-icon :status="$payment->status('created')"/>
-                    </td>--}}
                     <td>
                         <x-payment-status-icon :status="$payment->status('successful')"/>
                     </td>

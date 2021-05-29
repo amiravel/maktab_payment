@@ -28,7 +28,8 @@ class SMSChannel
 
         $message = <<<EOD
 $payment->name عزیز
-پرداخت شما به مبلغ $payment->amount تومان جهت $tags با موفقیت انجام شد. شماره ارجاع: $payment->refID
+پرداخت شما به مبلغ $payment->amount تومان جهت $tags با موفقیت انجام شد.
+شماره ارجاع: $paymentLog->refID
 اطلاع‌رسانی‌های بعدی متعاقبا صورت خواهد گرفت.
 
 لغو دریافت پیامک با ارسال off
@@ -43,11 +44,9 @@ EOD;
             'username' => env('TEXT_SMS_USERNAME'),
             'password' => env('TEXT_SMS_PASSWORD'),
             'note' => $message,
-            'receiver_number' => $payment->mobile,
+            'receiver_number' => $payment->mobile->formatForMobileDialingInCountry('IR'),
             'sender_number' => env('TEXT_SMS_NUMBER'),
         ]);
-
-        //info($payment->id . $response->body());
 
         if (Str::contains($response->body(), 'error')) {
             $paymentLog->notify(

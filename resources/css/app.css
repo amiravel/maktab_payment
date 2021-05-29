@@ -4,6 +4,8 @@
 
 @import 'vazir.css';
 
+@import '~intl-tel-input/build/css/intlTelInput.css';
+
 .btn {
     @apply text-base font-medium rounded-lg p-2;
 }
@@ -11,5 +13,3 @@
 .btn--primary {
     @apply bg-blue-500 text-white;
 }
-
-

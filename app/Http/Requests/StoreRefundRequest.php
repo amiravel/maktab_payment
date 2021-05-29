@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CC;
+use App\Rules\IBAN;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,21 +27,24 @@ class StoreRefundRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string',
-            'mobile' => ['required', Rule::phone()->detect()->mobile()],
+            'name' => 'required|string',
             'email' => 'required|email',
-            'refID' => 'required|numeric',
-            'card_number' => ['required', 'digits:16'],
-            'iban' => 'required|digits:24',
-            'amount' => 'required'
+            'mobile' => ['required', Rule::phone()->detect()->mobile()],
+            'payment_id' => 'required_without:refID|nullable|min:1|numeric',
+            'refID' => 'required_without:payment_id|nullable|min:1|numeric',
+            'card_number' => ['required', new CC()],
+            'iban' => ['required', new IBAN()],
+            'amount' => 'required',
         ];
     }
 
     public function attributes()
     {
         return [
-            'card_number' => "شماره کارت",
-            'iban' => "شماره شبا",
+            'payment_id' => 'شماره تراکنش',
+            'refID' => 'شماره ارجاع',
+            'card_number' => 'شماره کارت',
+            'iban' => 'شماره شبا'
         ];
     }
 }

@@ -14,7 +14,7 @@ class Refund extends Model
     use SoftDeletes;
     use FiltersRecords;
 
-    protected $fillable = ['uuid', 'name', 'mobile', 'email', 'amount', 'refID', 'card_number', 'iban', 'description', 'seen'];
+    protected $fillable = ['payment_id', 'uuid', 'name', 'mobile', 'email', 'amount', 'refID', 'card_number', 'iban', 'description', 'seen'];
 
     protected $casts = [
         'seen' => 'boolean'
@@ -37,5 +37,23 @@ class Refund extends Model
     protected function serializeDate($date)
     {
         return jdate($date);
+    }
+
+    public function setIbanAttribute($value)
+    {
+        $this->attributes['iban'] = Str::replaceFirst("-", "", Str::replaceFirst("IR", "", $value));
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
+
+    public function markAsRead($read = true)
+    {
+        if (!$this->seen)
+            $this->update([
+                'seen' => $read
+            ]);
     }
 }

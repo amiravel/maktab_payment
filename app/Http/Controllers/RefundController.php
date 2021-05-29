@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Refund\RefundMarkAsRead;
 use App\Http\Requests\StoreRefundRequest;
 use App\Models\Payment;
+use App\Models\PaymentLog;
 use App\Models\Refund;
 use Illuminate\Http\Request;
 
@@ -57,18 +59,26 @@ class RefundController extends Controller
      */
     public function show(Refund $refund)
     {
-        $payments = Payment::query()
-            ->whereHas('logs', function ($query) use ($refund) {
-                $query->where('refID', $refund->refID);
-            })->get();
+        /**
+         * @var $payment Payment
+         */
+        if (is_null($refund->payment)) {
+            $payment = null;
+            if (PaymentLog::query()->where('refID', $refund->refID)->exists())
+                $payment = PaymentLog::query()->where('refID', $refund->refID)->first()->payment;
+        } else {
+            $payment = $refund->payment;
+        }
 
-        if ($first = $payments->first())
-            $mask_card_number = $first->logs()
-                ->whereNotNull('raw_receipt')->first()->raw_receipt['MaskedCardNumber'] ?? false;
+        if ($payment)
+            $mask_card_number = $payment->logs()
+                    ->whereNotNull('raw_receipt')->first()->raw_receipt['MaskedCardNumber'] ?? false;
         else
             $mask_card_number = false;
 
-        return view('refunds.show', compact('refund', 'payments', 'mask_card_number'));
+        RefundMarkAsRead::run($refund);
+
+        return view('refunds.show', compact('refund', 'payment', 'mask_card_number'));
     }
 
     /**

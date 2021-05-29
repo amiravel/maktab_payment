@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreatePaymentRequest extends FormRequest
 {
@@ -26,11 +27,11 @@ class CreatePaymentRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email',
-            'mobile' => 'required|min:11',
+            'mobile' => ['required', Rule::phone()->detect()->mobile()],
             'description' => 'required|string',
             'tags' => 'required|array',
             'tags.*' => 'required|integer|exists:tags,id',
-            'amount' => 'required|integer|min:10000',
+            'amount' => 'required|integer',
             'callback' => 'required|url',
             'information' => 'nullable|array'
         ];

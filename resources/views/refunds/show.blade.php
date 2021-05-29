@@ -14,7 +14,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
 
             <div class="space-y-4">
-                @if(count($payments))
+                @if($payment)
                     <div class="flex w-full mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                         <div class="flex items-center justify-center w-12 bg-green-500">
                             <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40"
@@ -27,10 +27,9 @@
                         <div class="px-4 py-2 -mx-3">
                             <div class="mx-3">
                             <span
-                                class="font-semibold text-green-500 dark:text-green-400">شماره ارجاع یافت شد.</span>
-                                <p class="text-sm text-gray-600 dark:text-gray-200">شماره ارجاع وارد شده توسط کاربر در
-                                    سیستم
-                                    یافت شده است.</p>
+                                class="font-semibold text-green-500 dark:text-green-400">تراکنش یافت شد.</span>
+                                <p class="text-sm text-gray-600 dark:text-gray-200">تراکنش کاربر در سیستم یافت شده
+                                    است.</p>
                             </div>
                         </div>
                     </div>
@@ -47,8 +46,11 @@
                         @if(is_string($mask_card_number))
                             <div class="px-4 py-2 -mx-3 w-full">
                                 <div class="mx-3">
-                                <span
-                                    class="font-semibold text-blue-500 dark:text-blue-400">{{ sprintf('تطبیق شماره کارت %s است.', \Illuminate\Support\Str::is($mask_card_number, implode("-", str_split($refund->card_number, 4))) ? 'صحیح' : 'غلط') }}</span>
+                                    @if(\Illuminate\Support\Str::is($mask_card_number, implode("-", str_split($refund->card_number, 4))))
+                                        <span class="font-semibold text-blue-500 dark:text-blue-400">تطبیق شماره کارت صحیح است.</span>
+                                    @else
+                                        <span class="font-semibold text-red-500 dark:text-red-400">تطبیق شماره کارت غلط است.</span>
+                                    @endif
 
                                     <ul class="flex flex-row mt-2 space-x-2 space-x-reverse">
                                         <li class="border-gray-400 flex flex-row w-full">
@@ -101,10 +103,9 @@
 
                         <div class="px-4 py-2 -mx-3">
                             <div class="mx-3">
-                                <span class="font-semibold text-red-500 dark:text-red-400">شماره ارجاع یافت نشد.</span>
-                                <p class="text-sm text-gray-600 dark:text-gray-200">شماره ارجاع که کاربر آن را وارد کرده
-                                    است
-                                    در سیستم یافت نشده است.</p>
+                                <span class="font-semibold text-red-500 dark:text-red-400">تراکنش یافت نشد.</span>
+                                <p class="text-sm text-gray-600 dark:text-gray-200">تراکنشی با توجه به اطلاعاتی که کاربر
+                                    در درخواست وارد کرده است یافت نشده است.</p>
                             </div>
                         </div>
                     </div>
@@ -138,12 +139,12 @@
 
                 <div class="px-4 py-5 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        Refund Payments
+                        Refund Payment
                     </h3>
                 </div>
 
                 <div class="space-y-8">
-                    @forelse($payments as $payment)
+                    @if($payment)
                         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                             <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
                                 <h4 class="text-base leading-6 font-medium text-gray-900">
@@ -171,9 +172,9 @@
                                 </dl>
                             </div>
                         </div>
-                    @empty
-                        <p class="px-4 py-5 sm:px-6">تراکنشی بر اساس شماره ارجاع یافت نشد.</p>
-                    @endforelse
+                    @else
+                        <p class="px-4 py-5 sm:px-6">تراکنشی یافت نشده است.</p>
+                    @endif
                 </div>
             </div>
         </div>

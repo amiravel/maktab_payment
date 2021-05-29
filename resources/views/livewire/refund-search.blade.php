@@ -35,7 +35,6 @@
                 <th>نام و نام خانوادگی</th>
                 <th>ایمیل</th>
                 <th>موبایل</th>
-                <th>شماره ارجاع</th>
                 <th>ساخته شده در</th>
                 <th>آخرین بروزرسانی</th>
                 <th>عملیات</th>
@@ -43,12 +42,11 @@
             </thead>
             <tbody>
             @forelse($refunds as $index => $refund)
-                <tr class="@if(!$refund->read) font-bold @endif">
+                <tr class="@if(!$refund->seen) font-bold @endif">
                     <td>{{ $refund->id }}</td>
                     <td>{{ $refund->name }}</td>
                     <td class="select-all">{{ $refund->email }}</td>
-                    <td class="select-all">{{ $refund->mobile }}</td>
-                    <td class="select-all">{{ $refund->refID }}</td>
+                    <td class="select-all">{{ \Illuminate\Support\Str::replaceFirst("+98", '0', $refund->mobile) }}</td>
 
                     <td>{{ jdate($refund->created_at)->format('d M y - H:i') }}</td>
                     <td>{{ jdate($refund->updated_at)->format('d M y - H:i') }}</td>

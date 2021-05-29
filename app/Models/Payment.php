@@ -6,6 +6,7 @@ use Cerbero\QueryFilters\FiltersRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Propaganistas\LaravelPhone\Casts\RawPhoneNumberCast;
 
 class Payment extends Model
@@ -48,6 +49,11 @@ class Payment extends Model
     {
         return $this->hasMany(PaymentLog::class)
             ->latest();
+    }
+
+    public function refunds()
+    {
+        return $this->hasMany(Refund::class);
     }
 
     public function getDriveAttribute()
@@ -166,17 +172,6 @@ class Payment extends Model
     {
         $query->whereHas('tags.drive', function ($query2) use ($drive) {
             $query2->where('id', $drive);
-        });
-    }
-
-    /**
-     * @param $query Builder
-     * @param $refund Refund
-     */
-    public function scopeRefund($query, Refund $refund)
-    {
-        $query->whereHas('logs', function ($query) use ($refund) {
-            return $query->where('refID', $refund->refID);
         });
     }
 }
