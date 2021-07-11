@@ -17,6 +17,7 @@ class TagAPIController extends Controller
     public function index()
     {
         $tags = Tag::query()
+            ->where('public', true)
             ->whereNull('parent')
             ->get();
 

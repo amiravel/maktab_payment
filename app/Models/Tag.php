@@ -10,7 +10,11 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = [
-        'parent', 'name'
+        'parent', 'name', 'public'
+    ];
+
+    protected $casts = [
+        'public' => 'boolean'
     ];
 
     protected $with = [
