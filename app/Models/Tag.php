@@ -28,7 +28,7 @@ class Tag extends Model
 
     public function children()
     {
-        return $this->hasMany(Tag::class, 'parent', 'id');
+        return $this->hasMany(Tag::class, 'parent', 'id')->latest();
     }
 
     public function payment()
