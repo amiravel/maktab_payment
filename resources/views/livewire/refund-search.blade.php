@@ -19,11 +19,11 @@
                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>--}}
 
-            <div class="col-span-4">
+            {{-- <div class="col-span-4">
                 <label for="refID" class="block text-sm font-medium text-gray-700">شماره ارجاع</label>
                 <input type="number" name="refID" id="refID" autocomplete="off" wire:model.lazy="search.refID"
                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
+            </div> --}}
         </div>
     </div>
 
