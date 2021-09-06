@@ -6,7 +6,6 @@ use Cerbero\QueryFilters\FiltersRecords;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Propaganistas\LaravelPhone\Casts\RawPhoneNumberCast;
 
 class Payment extends Model
@@ -26,6 +25,10 @@ class Payment extends Model
         'amount' => 'integer',
         'information' => 'array',
         'mobile' => RawPhoneNumberCast::class . ':IR',
+    ];
+
+    protected $attributes = [
+        'drive_id' => 0
     ];
 
     public function setDescriptionAttribute($value)
@@ -56,14 +59,14 @@ class Payment extends Model
         return $this->hasMany(Refund::class);
     }
 
-    public function getDriveAttribute()
+    public function cycles()
     {
-        $query = $this->tags()->whereHas('drive');
+        return $this->belongsToMany(Cycle::class);
+    }
 
-        if ($query->exists())
-            return $query->first()->drive()->first();
-
-        return Drive::whereValue('zarinpal')->first();
+    public function drive()
+    {
+        return $this->belongsTo(Drive::class);
     }
 
     public function markAsRead()

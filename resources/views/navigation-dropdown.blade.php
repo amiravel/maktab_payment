@@ -16,6 +16,10 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('cycles.index') }}" :active="request()->routeIs('cycles.index')">
+                        {{ __('Cycles') }}
+                    </x-jet-nav-link>
+
                     <x-jet-nav-link href="{{ route('payments.index') }}" :active="request()->routeIs('payments.index')">
                         {{ __('Payments') }}
                     </x-jet-nav-link>

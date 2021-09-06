@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\GetActiveCycle;
 use App\Actions\Payment\PaymentMarkAsRead;
 use App\Actions\Payment\PaymentMarkAsUnRead;
 use App\Actions\Payment\PaymentVerify;
 use App\Http\Requests\CreatePaymentRequest;
+use App\Models\Cycle;
+use App\Models\Drive;
 use App\Models\Payment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -44,11 +47,10 @@ class PaymentController extends Controller
             $payment->tags()->sync($request->get('tags'));
         }
 
-        if (!in_array($payment->drive->value, ['pasargad', 'zarinpal'])) {
-            DB::rollBack();
-            return back()
-                ->with('message', 'درگاه پرداخت وارد شده معتبر نیست.');
-        }
+        $cycle = GetActiveCycle::run();
+        $payment->cycles()->sync($cycle->id);
+        $payment->drive_id = Drive::whereValue($cycle->drive)->first()->id;
+        $payment->save();
 
         $invoice = new Invoice();
         $invoice->amount(($payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount);

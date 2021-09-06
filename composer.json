@@ -26,6 +26,7 @@
         "mediconesystems/livewire-datatables": "^0.4.3",
         "morilog/jalali": "^3.2",
         "propaganistas/laravel-phone": "^4.3",
+        "rappasoft/laravel-livewire-tables": "^1.13",
         "rollbar/rollbar-laravel": "^7.0",
         "shetabit/payment": "^4.0",
         "spatie/laravel-query-builder": "^3.3"

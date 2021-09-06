@@ -21,4 +21,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('refunds', \App\Http\Controllers\RefundController::class)
         ->except(['create', 'store', 'show']);
+
+    Route::resource('cycles', \App\Http\Controllers\CycleController::class);
 });
