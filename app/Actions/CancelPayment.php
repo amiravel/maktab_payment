@@ -11,7 +11,9 @@ class CancelPayment
 
     public function handle(Payment $payment)
     {
-        if ($payment->status('created')) {
+        if (empty($payment->referenceID)) {
+            $payment->markAsRead();
+
             $payment->logs()->create([
                 'status' => 0,
                 'type' => 'after',
