@@ -55,6 +55,6 @@ class PaymentTable extends DataTableComponent
 
     public function setTableRowClass(Payment $row): ?string
     {
-        return $row->read ?: 'font-black';
+        return $row->read ?: 'font-bold';
     }
 }
