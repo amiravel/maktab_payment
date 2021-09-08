@@ -35,6 +35,8 @@ class PaymentTable extends DataTableComponent
             Column::make(__('Email'), 'email')->searchable(),
             Column::make(__('Amount'), 'amount')->format(fn($value) => number_format($value) . "T"),
             Column::make(__('RefID'), 'ReferenceID'),
+            Column::make(__('Tags'), 'tags')
+                ->format(fn($value) => $value->implode('name', ', ')),
             Column::make(__('Created At'), 'created_at')->format(fn($value) => jdate($value)),
         ];
     }
@@ -42,6 +44,7 @@ class PaymentTable extends DataTableComponent
     public function query(): Builder
     {
         return Payment::query()->latest()
+            ->with(['tags'])
             ->when($this->getFilter('status'), fn(Builder $query, $search) => $query->scopes($search));
     }
 
