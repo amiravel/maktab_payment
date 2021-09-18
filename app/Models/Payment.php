@@ -66,7 +66,10 @@ class Payment extends Model
 
     public function drive()
     {
-        return $this->belongsTo(Drive::class);
+        return $this->belongsTo(Drive::class)->withDefault([
+            'name' => 'نامشخص',
+            'value' => 'unknown'
+        ]);
     }
 
     public function markAsRead()

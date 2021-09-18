@@ -15,10 +15,12 @@ class PaymentLogObserver
      */
     public function created(PaymentLog $paymentLog)
     {
-        // TODO: changed to dynamic tags id
-        if ($paymentLog->payment->tags()->whereIn('id', [131, 134])->exists())
-            if ($paymentLog->payment->status('successful') && $paymentLog->payment->mobile->isOfCountry('IR')) {
+        $payment = $paymentLog->payment;
+
+        if ($payment->status('successful')) {
+            if ($payment->mobile->isOfCountry('IR')) {
                 $paymentLog->notify(new InvoicePaid($paymentLog));
             }
+        }
     }
 }

@@ -158,9 +158,8 @@
                             </div>
                             <div class="border-t border-gray-200">
                                 <dl>
-                                    @foreach($payment->makeHidden(['id', 'user_id', 'information', 'callback', 'read', 'created_at', 'updated_at'])->attributesToArray() as $key => $value)
-                                        <div
-                                            class="@if($refund->$key == $value) bg-green-50 @elseif($loop->odd) bg-gray-50 @else bg-white @endif px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    @foreach($payment->makeHidden(['id', 'user_id', 'drive_id', 'information', 'callback', 'read', 'created_at', 'updated_at'])->attributesToArray() as $key => $value)
+                                        <div class="@if($refund->$key == $value) bg-green-50 @elseif($loop->odd) bg-gray-50 @else bg-white @endif px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                             <dt class="text-sm font-medium text-gray-500">
                                                 {{ __(\Illuminate\Support\Str::studly($key)) }}
                                             </dt>

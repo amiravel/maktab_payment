@@ -21,10 +21,15 @@ class CycleTable extends DataTableComponent
                 ->format($number_format),
             Column::make(__('Center'), 'center')
                 ->format($number_format),
+            Column::make(__('Second Center'), 'second_center')
+                ->format($number_format),
             Column::make(__('End'), 'end')
                 ->format($number_format),
 
             Column::make(__('Percentage'), 'percentage'),
+
+            Column::make(__('Current Max'), 'max')
+                ->format($number_format),
 
             Column::make("تعداد پرداختی‌ها", 'payments_count')
                 ->format($number_format),
@@ -46,10 +51,5 @@ class CycleTable extends DataTableComponent
         return Cycle::query()->latest()
             ->withCount('payments')
             ->withSum('payments', 'amount');
-    }
-
-    public function getTableRowUrl($row): string
-    {
-        return route('cycles.show', $row);
     }
 }

@@ -17,6 +17,6 @@ class GetActiveCycle
             $cycle = Cycle::query()->latest()->offset($offset++)->first();
         } while (optional($cycle)->isFull);
 
-        return $cycle ?? CreateNewCycle::run();
+        return $cycle ?? CreateNewCycle::run($cycle);
     }
 }

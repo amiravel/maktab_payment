@@ -13,6 +13,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
             <div class="space-x-3 space-x-reverse">
+                <span class="inline-block rounded-full text-white bg-blue-500 px-2 py-1 text-xs font-bold">
+                    درگاه:
+                    {{ optional($payment->drive)->name ?? 'نامشخص' }}
+                </span>
+
                 @foreach($payment->tags as $tag)
                     <span class="inline-block rounded-full text-white bg-indigo-500 px-2 py-1 text-xs font-bold">
                         {{ $tag->name }}
@@ -30,7 +35,7 @@
                     </div>
                     <div class="border-t border-gray-200">
                         <dl>
-                            @foreach($payment->makeHidden(['id', 'user_id', 'callback', 'information'])->attributesToArray() as $key => $value)
+                            @foreach($payment->makeHidden(['id', 'user_id', 'drive_id', 'callback', 'information'])->attributesToArray() as $key => $value)
                                 <div
                                     class="@if ($loop->odd) bg-gray-50 @else bg-white @endif px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                     <dt class="text-sm font-medium text-gray-500">

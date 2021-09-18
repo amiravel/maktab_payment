@@ -13,6 +13,7 @@ class Cycle extends Model
     protected $fillable = [
         'first',
         'center',
+        'second_center',
         'end',
         'percentage',
         'drives',
@@ -24,13 +25,18 @@ class Cycle extends Model
         'drives' => 'array'
     ];
 
-    public function payments() : BelongsToMany
+    protected $with = [
+        'payments'
+    ];
+
+    public function payments(): BelongsToMany
     {
         return $this->belongsToMany(Payment::class)
             ->successful();
     }
 
-    public function getDriveAttribute() {
+    public function getDriveAttribute()
+    {
         $total_payments = $this->payments()->sum('amount');
 
         if ($total_payments <= $this->center)
@@ -39,7 +45,16 @@ class Cycle extends Model
         return $this->drives[1];
     }
 
-    public function getIsFullAttribute() {
-        return $this->payments()->sum('amount') >= (($this->center * 100) / $this->percentage);
+    public function getIsFullAttribute()
+    {
+        return $this->payments()->sum('amount') >= $this->max;
+    }
+
+    public function getIsEqualCenterAttribute(){
+        return $this->center == $this->second_center;
+    }
+
+    public function getMaxAttribute(){
+        return round(($this->center * 100) / $this->percentage);
     }
 }
