@@ -52,7 +52,8 @@ class PaymentTable extends DataTableComponent
                 ->asHtml(),
             Column::make(__('Tags'), 'tags')
                 ->format(fn($value) => $value->implode('name', ', ')),
-            Column::make(__('Created At'), 'created_at')->format(fn($value) => jdate($value)),
+//            Column::make(__('Created At'), 'created_at')->format(fn($value) => jdate($value)),
+            Column::make(__('Created At'), 'created_at'),
             Column::make(__('Actions'))
                 ->format(fn($value, $column, $row) => view('payments.actions',)->withModel($row))
         ];
