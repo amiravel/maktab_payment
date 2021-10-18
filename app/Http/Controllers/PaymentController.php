@@ -7,7 +7,6 @@ use App\Actions\Payment\PaymentMarkAsRead;
 use App\Actions\Payment\PaymentMarkAsUnRead;
 use App\Actions\Payment\PaymentVerify;
 use App\Http\Requests\CreatePaymentRequest;
-use App\Models\Cycle;
 use App\Models\Drive;
 use App\Models\Payment;
 use App\Models\Tag;
@@ -53,7 +52,7 @@ class PaymentController extends Controller
         $payment->save();
 
         $invoice = new Invoice();
-        $invoice->amount(($payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount);
+        $invoice->amount(($payment->drive->value == 'vandar') ? ($payment->amount * 10) : $payment->amount);
         $invoice->detail($payment->only(['name', 'email', 'mobile', 'description']));
 
         $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)

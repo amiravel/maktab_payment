@@ -13,6 +13,32 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
 
+            @if($payment->drive->value == 'vandar')
+                <div class="flex w-full mx-auto overflow-hidden bg-white rounded-lg shadow-md">
+                    <div class="flex items-center justify-center w-12 bg-gray-500">
+                        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"/>
+                        </svg>
+                    </div>
+
+                    <div class="px-4 py-2 -mx-3 flex flex-1 justify-between items-center">
+                        <div class="mx-3">
+                            <span class="font-semibold text-grey-500 dark:text-green-400">عودت خودکار</span>
+                            <p class="text-sm text-gray-600 dark:text-gray-200">اگر پرداختی از درگاه وندار انجام شده
+                                باشد
+                                امکان عودت خودکار را دارید.</p>
+                        </div>
+
+                        <button disabled
+                           class="mx-3 py-2 px-4 capitalize tracking-wide bg-gray-600 dark:bg-gray-800 text-white font-medium rounded hover:bg-gray-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-700">
+                            ثبت درخواست (غیرفعال)
+                        </button>
+                    </div>
+                </div>
+            @endif
+
             <div class="space-y-4">
                 @if($payment)
                     <div class="flex w-full mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -159,7 +185,8 @@
                             <div class="border-t border-gray-200">
                                 <dl>
                                     @foreach($payment->makeHidden(['id', 'user_id', 'drive_id', 'information', 'callback', 'read', 'created_at', 'updated_at'])->attributesToArray() as $key => $value)
-                                        <div class="@if($refund->$key == $value) bg-green-50 @elseif($loop->odd) bg-gray-50 @else bg-white @endif px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <div
+                                            class="@if($refund->$key == $value) bg-green-50 @elseif($loop->odd) bg-gray-50 @else bg-white @endif px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                             <dt class="text-sm font-medium text-gray-500">
                                                 {{ __(\Illuminate\Support\Str::studly($key)) }}
                                             </dt>
@@ -168,6 +195,15 @@
                                             </dd>
                                         </div>
                                     @endforeach
+
+                                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
+                                            {{ __('Drive') }}
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            {{ $payment->drive->name }}
+                                        </dd>
+                                    </div>
                                 </dl>
                             </div>
                         </div>

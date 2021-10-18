@@ -24,19 +24,3 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('cycles', \App\Http\Controllers\CycleController::class);
 });
-
-Route::get('test/{payment}', function (\App\Models\Payment $payment) {
-    $refID = "123456";
-    $authority = "654321";
-
-    $payment->logs()->updateOrCreate([
-        'authority' => $authority,
-        'refID' => $refID,
-    ], [
-        'status' => 100,
-        'type' => 'after',
-        'authority' => $authority,
-        'message' => 'پرداخت با موفقیت انجام شد.',
-        'refID' => $refID,
-    ]);
-});

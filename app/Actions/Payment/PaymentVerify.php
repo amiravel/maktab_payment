@@ -17,7 +17,7 @@ class PaymentVerify
     {
         try {
             $receipt = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
-                ->amount(($payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount)
+                ->amount(($payment->drive->value == 'vandar') ? ($payment->amount * 10) : $payment->amount)
                 ->transactionId($payment->logs()->first()->authority)
                 ->verify();
 

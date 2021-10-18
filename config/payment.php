@@ -210,6 +210,13 @@ return [
             'callbackUrl' => 'http://yoursite.com/path/to',
             'description' => 'payment using zibal',
         ],
+        'vandar' => [
+            'apiPurchaseUrl' => 'https://ipg.vandar.io/api/v3/send',
+            'apiPaymentUrl' => 'https://ipg.vandar.io/v3/',
+            'apiVerificationUrl' => 'https://ipg.vandar.io/api/v3/verify',
+
+            'VANDAR_API_TOKEN' => env('VANDAR_API_TOKEN', '')
+        ]
     ],
 
     /*
@@ -243,5 +250,6 @@ return [
         'yekpay' => \Shetabit\Multipay\Drivers\Yekpay\Yekpay::class,
         'zarinpal' => \Shetabit\Multipay\Drivers\Zarinpal\Zarinpal::class,
         'zibal' => \Shetabit\Multipay\Drivers\Zibal\Zibal::class,
+        'vandar' => \App\Packages\PaymentDriver\Vandar::class,
     ]
 ];

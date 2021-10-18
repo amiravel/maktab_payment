@@ -28,6 +28,6 @@ class CycleObserver
         $center = random_int($cycle->first / 1_000_000, $cycle->end / 1_000_000) * 1_000_000;
 
         $cycle->center = $cycle->second_center = $cycle->center ?? $center;
-        $cycle->drives = $cycle->drives ?? ['pasargad', 'zarinpal'];
+        $cycle->drives = $cycle->drives ?? ['vandar', 'zarinpal'];
     }
 }
