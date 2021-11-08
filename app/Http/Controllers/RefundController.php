@@ -71,8 +71,8 @@ class RefundController extends Controller
         }
 
         if ($payment)
-            $mask_card_number = $payment->logs()
-                    ->whereNotNull('raw_receipt')->first()->mask_card_number;
+            $mask_card_number = optional($payment->logs()
+                    ->whereNotNull('raw_receipt')->first())->mask_card_number;
         else
             $mask_card_number = false;
 
