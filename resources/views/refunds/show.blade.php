@@ -13,7 +13,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
 
-            @if(optional($payment->drive)->value == 'vandar')
+            @if(optional(optional($payment)->drive)->value == 'vandar')
                 <div class="flex w-full mx-auto overflow-hidden bg-white rounded-lg shadow-md">
                     <div class="flex items-center justify-center w-12 bg-gray-500">
                         <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40"

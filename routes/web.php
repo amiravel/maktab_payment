@@ -7,7 +7,7 @@ Route::redirect('/', '/dashboard');
 Route::get('verify', \App\Http\Controllers\VerifyController::class)->name('verify');
 
 Route::resource('refunds', \App\Http\Controllers\RefundController::class)
-    ->only(['create', 'store', 'show']);
+    ->only(['create', 'store']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
@@ -20,7 +20,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         ->except(['show', 'destroy']);
 
     Route::resource('refunds', \App\Http\Controllers\RefundController::class)
-        ->except(['create', 'store', 'show']);
+        ->except(['create', 'store']);
 
     Route::resource('cycles', \App\Http\Controllers\CycleController::class);
 });
