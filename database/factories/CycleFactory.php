@@ -25,7 +25,7 @@ class CycleFactory extends Factory
         return [
             'first' => 1_000_000,
             'end' => 10_000_000,
-            'percentage' => 30,
+            'percentage' => 80,
             'drives' => ['vandar', 'zarinpal'],
         ];
     }
