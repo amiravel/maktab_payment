@@ -27,7 +27,7 @@ class CreatePaymentRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email',
-            'mobile' => 'required|phone:AUTO,IR',
+            'mobile' => 'required',
             'description' => 'required|string',
             'tags' => 'required|array',
             'tags.*' => 'required|integer|exists:tags,id',
