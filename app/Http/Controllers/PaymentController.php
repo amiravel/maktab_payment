@@ -53,7 +53,10 @@ class PaymentController extends Controller
 
         $invoice = new Invoice();
         $invoice->amount(($payment->drive->value == 'vandar') ? ($payment->amount * 10) : $payment->amount);
-        $invoice->detail($payment->only(['name', 'email', 'mobile', 'description']));
+
+        $details = $payment->only(['name', 'email', 'mobile', 'description']);
+        $details['mobile'] = phone($details['mobile'], 'IR')->formatForMobileDialingInCountry('IR');
+        $invoice->detail($details);
 
         $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
             ->callbackUrl(route('verify', ['payment_id' => $payment->id]))
@@ -79,7 +82,6 @@ class PaymentController extends Controller
 
     public function edit(Payment $payment)
     {
-
     }
 
     public function update(Payment $payment, Request $request)
