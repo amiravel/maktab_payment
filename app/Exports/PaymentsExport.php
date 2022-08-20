@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Payment;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
@@ -28,7 +29,7 @@ class PaymentsExport implements FromCollection, WithHeadings, WithColumnFormatti
      */
     public function collection()
     {
-        return $this->payments;
+        return Payment::query()->findMany($this->payments);
     }
 
     public function headings(): array

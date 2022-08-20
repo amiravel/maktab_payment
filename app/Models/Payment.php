@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Propaganistas\LaravelPhone\Casts\RawPhoneNumberCast;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Payment extends Model
 {
@@ -24,7 +25,7 @@ class Payment extends Model
     protected $casts = [
         'amount' => 'integer',
         'information' => 'array',
-        'mobile' => RawPhoneNumberCast::class . ':IR',
+        // 'mobile' => RawPhoneNumberCast::class . ':IR',
     ];
 
     protected $attributes = [

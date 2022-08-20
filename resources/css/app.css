@@ -1,10 +1,10 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-@import 'vazir.css';
+@import "Vazirmatn-RD-font-face.css";
 
-@import '~intl-tel-input/build/css/intlTelInput.css';
+@import "~intl-tel-input/build/css/intlTelInput.css";
 
 .btn {
     @apply text-base font-medium rounded-lg p-2;

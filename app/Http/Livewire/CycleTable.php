@@ -9,44 +9,38 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class CycleTable extends DataTableComponent
 {
+    protected $model = Cycle::class;
+
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
+    }
 
     public function columns(): array
     {
-        $number_format = fn($value) => number_format($value);
+        $number_format = fn ($value) => number_format($value);
 
         return [
             Column::make(__('ID'), 'id'),
 
-            Column::make(__('First'), 'first')
-                ->format($number_format),
-            Column::make(__('Center'), 'center')
-                ->format($number_format),
-            Column::make(__('Second Center'), 'second_center')
-                ->format($number_format),
-            Column::make(__('End'), 'end')
-                ->format($number_format),
+            Column::make(__('First'), 'first')->format($number_format),
+            Column::make(__('Center'), 'center')->format($number_format),
+            Column::make(__('Second Center'), 'second_center')->format($number_format),
+            Column::make(__('End'), 'end')->format($number_format),
 
             Column::make(__('Percentage'), 'percentage'),
 
-            Column::make(__('Current Max'), 'max')
-                ->format($number_format),
+            Column::make(__('Current Max'), 'max')->label(fn ($row, Column $column) => $number_format($row->max) . "T"),
+            Column::make("تعداد پرداختی‌ها", 'payments_count')->label(fn ($row, Column $column) => $row->payments_count),
 
-            Column::make("تعداد پرداختی‌ها", 'payments_count')
-                ->format($number_format),
+            Column::make("مجموع پرداخت", 'payments_sum_amount')->label(fn ($row, Column $column) => $number_format($row->payments_sum_amount) . "T"),
 
-            Column::make("مجموع پرداخت", 'payments_sum_amount')
-                ->format($number_format),
-
-            Column::make('درگاه', 'drive'),
-
-            Column::make(__('Created At'), 'created_at')
-                ->format(fn($value) => jdate($value)),
-            Column::make(__('Ended At'), 'ended_at')
-                ->format(fn($value) => $value ? jdate($value) : ''),
+            Column::make(__('Created At'), 'created_at')->format(fn ($value) => jdate($value)),
+            Column::make(__('Ended At'), 'ended_at')->format(fn ($value) => $value ? jdate($value) : ''),
         ];
     }
 
-    public function query(): Builder
+    public function builder(): Builder
     {
         return Cycle::query()->latest()
             ->withCount('payments')

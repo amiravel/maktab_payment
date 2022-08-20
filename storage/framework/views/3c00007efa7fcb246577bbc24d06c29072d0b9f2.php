@@ -1,0 +1,1 @@
+<a href="<?php echo e($path); ?>" <?php echo count($attributes) ? $column->arrayToAttributes($attributes) : ''; ?>><?php echo e($title); ?></a><?php /**PATH /Users/ehsanmody/Code/Maktab/services/old/maktabpayment/vendor/rappasoft/laravel-livewire-tables/src/../resources/views/includes/columns/link.blade.php ENDPATH**/ ?>

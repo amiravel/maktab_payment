@@ -2,38 +2,76 @@
 
 namespace App\Http\Livewire;
 
-use App\Exports\PaymentsExport;
-use App\Models\Drive;
 use App\Models\Payment;
+use App\Exports\PaymentsExport;
 use Illuminate\Database\Eloquent\Builder;
-use Maatwebsite\Excel\Facades\Excel;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Filter;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
+use Rappasoft\LaravelLivewireTables\Views\Filters\DateFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
+use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
+use Rappasoft\LaravelLivewireTables\Views\Columns\ButtonGroupColumn;
 
 class PaymentTable extends DataTableComponent
 {
 
-    public bool $columnSelect = true;
+    protected $model = Payment::class;
 
-    public array $bulkActions = [
-        'export' => 'خروجی',
-    ];
+    public function bulkActions(): array
+    {
+        return [
+            'read' => 'Read',
+            'unread' => 'Unread',
+            'export' => 'Export',
+        ];
+    }
+
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
+        $this->setPerPage(25);
+        $this->setEagerLoadAllRelationsStatus(true);
+        $this->setFilterLayoutSlideDown();
+
+        $this->setTdAttributes(function ($column, $row, $columnIndex, $rowIndex) {
+            if (!$row->read) {
+                return [
+                    'default' => true,
+                    'class' => 'font-black',
+                ];
+            }
+
+            return ['default' => true];
+        });
+
+        $this->setHideBulkActionsWhenEmptyEnabled();
+    }
 
     public function filters(): array
     {
         return [
-            'status' => Filter::make('Status')
-                ->select([
-                    '' => 'ALL',
+            SelectFilter::make('read')
+                ->options([
+                    '' => 'All',
+                    '1' => 'Yes',
+                    '0' => 'No',
+                ])->filter(function (Builder $builder, string $value) {
+                    if ($value === '1') {
+                        $builder->where('read', true);
+                    } elseif ($value === '0') {
+                        $builder->where('read', false);
+                    }
+                }),
+            SelectFilter::make('status')
+                ->options([
+                    '' => 'All',
                     'created' => 'Created',
                     'successful' => 'Successful',
-                    'error' => 'Error'
+                    'error' => 'Error',
                 ]),
-            'from' => Filter::make('From')
-                ->date(),
-            'to' => Filter::make('To')
-                ->date()
+            DateFilter::make('Created From', 'from'),
+            DateFilter::make('Created To', 'to'),
         ];
     }
 
@@ -44,49 +82,61 @@ class PaymentTable extends DataTableComponent
             Column::make(__('Name'), 'name')->searchable(),
             Column::make(__('Mobile'), 'mobile')->searchable(),
             Column::make(__('Email'), 'email')->searchable(),
-            Column::make(__('Amount'), 'amount')
-                ->format(fn($value) => number_format($value) . "T"),
-            Column::make(__('RefID'), 'ReferenceID'),
-            Column::make(__('Drive'), 'drive')
-                ->format(fn(Drive $drive) => "<img class='w-8 h-8 mx-auto' alt='" . optional($drive)->name . "' src='" . asset("svg/drives/$drive->value.png") . "' />")
-                ->asHtml(),
-            Column::make(__('Tags'), 'tags')
-                ->format(fn($value) => $value->implode('name', ', ')),
-            Column::make(__('Created At'), 'created_at')->format(fn($value) => jdate($value)),
-            Column::make(__('Actions'))
-                ->format(fn($value, $column, $row) => view('payments.actions',)->withModel($row))
+
+            Column::make(__('Amount'), 'amount')->format(fn ($value) => number_format($value) . "T"),
+
+            Column::make(__('Tags'), 'Tags')
+                ->label(fn ($row) => $row->tags->pluck('name')->implode(', '))
+                ->collapseOnTablet(),
+
+            Column::make(__('Status'), 'status')
+                ->label(fn ($row, Column $column) => $row->status('successful') ? '<span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">موفق</span>' : '<span class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">خطا</span>')
+                ->html(),
+
+            BooleanColumn::make(__('Read'), 'read'),
+
+            Column::make(__('Created At'), 'created_at')->format(fn ($value) => jdate($value)),
+            ButtonGroupColumn::make(__('Actions'))->buttons([
+                LinkColumn::make('Show')
+                    ->title(fn ($row) => __('Show'))
+                    ->location(fn ($row) => route('payments.show', $row))
+                    ->attributes(function ($row) {
+                        return [
+                            'class' => 'bg-blue-500 mx-2 text-white px-2 py-1 rounded font-medium hover:bg-blue-600 transition duration-200 each-in-out',
+                        ];
+                    }),
+            ])
         ];
     }
 
-    public function query(): Builder
+    public function builder(): Builder
     {
         return Payment::query()->latest()
             ->with(['tags'])
-            ->when($this->getFilter('status'), fn(Builder $query, $search) => $query->scopes($search))
-            ->when($this->getFilter('from'), fn(Builder $query, $search) => $query->whereDate('created_at', '>=', $search))
-            ->when($this->getFilter('to'), fn(Builder $query, $search) => $query->whereDate('created_at', '<=', $search));
+            ->when($this->getAppliedFilterWithValue('status'), fn (Builder $query, $status) => $query->scopes($status))
+            ->when($this->getAppliedFilterWithValue('from'), fn ($query, $from) => $query->whereDate('created_at', '>=', $from))
+            ->when($this->getAppliedFilterWithValue('to'), fn ($query, $to) => $query->whereDate('created_at', '<=', $to));
     }
 
-    public function setTableRowClass(Payment $row): ?string
+    public function read()
     {
-        return !$row->read ? 'font-bold' : '';
+        Payment::whereIn('id', $this->getSelected())->update(['read' => true]);
+        $this->clearSelected();
     }
 
-    public function changeSeen($id)
+    public function unread()
     {
-        $payment = Payment::findOrFail($id);
-
-        $payment->update([
-            'read' => !$payment->read
-        ]);
+        Payment::whereIn('id', $this->getSelected())->update(['read' => false]);
+        $this->clearSelected();
     }
 
     public function export()
     {
         $now = jdate();
+        $payments = $this->getSelected();
 
-        if ($this->selectedRowsQuery->count() > 0) {
-            return (new PaymentsExport($this->selectedRowsQuery->get()))->download("payments_$now.xlsx");
-        }
+        $this->clearSelected();
+
+        return (new PaymentsExport($payments))->download("payments_$now.xlsx");
     }
 }
