@@ -1,23 +1,31 @@
-<x-verify-layout>
-    @if($payment->extra_callback)
-    <form method="POST" action="{{ $payment->extra_callback }}">
+<?php if (isset($component)) { $__componentOriginal12189013e9e6252be6531784188be5bbf232d310 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\VerifyLayout::class, [] + (isset($attributes) ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('verify-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $constructor = (new ReflectionClass(App\View\Components\VerifyLayout::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+    <?php if($payment->extra_callback): ?>
+    <form method="POST" action="<?php echo e($payment->extra_callback); ?>">
         <input type="hidden" name="status" value="0">
-        <input type="hidden" name="message" value="{{ $payment->logs()->latest()->first()->message ?? $message }}">
+        <input type="hidden" name="message" value="<?php echo e($payment->logs()->latest()->first()->message ?? $message); ?>">
     </form>
-    @endif
+    <?php endif; ?>
     <section class="text-gray-600 body-font">
         <div class="container mx-auto flex flex-col px-5 py-12 justify-center items-center">
-            <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="{{ asset('svg/verify/no-data.svg') }}">
+            <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="<?php echo e(asset('svg/verify/no-data.svg')); ?>">
             <div class="w-full md:w-2/3 flex flex-col items-center text-center">
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
                     تراکنش شماره
-                    <span class="select-all">{{ $payment->id }}</span>،
+                    <span class="select-all"><?php echo e($payment->id); ?></span>،
                     <span class="text-red-500">ناموفق</span>
                     بود.
                 </h1>
-                <p class="text-2xl mb-8 leading-relaxed">{{ $payment->logs()->latest()->first()->message ?? $message }}</p>
+                <p class="text-2xl mb-8 leading-relaxed"><?php echo e($payment->logs()->latest()->first()->message ?? $message); ?></p>
 
-                <a href="{{ $payment->callback }}" class="py-2 px-4 flex justify-center items-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
+                <a href="<?php echo e($payment->callback); ?>" class="py-2 px-4 flex justify-center items-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
@@ -61,4 +69,9 @@
             </div>
         </div>
     </section>
-</x-verify-layout>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal12189013e9e6252be6531784188be5bbf232d310)): ?>
+<?php $component = $__componentOriginal12189013e9e6252be6531784188be5bbf232d310; ?>
+<?php unset($__componentOriginal12189013e9e6252be6531784188be5bbf232d310); ?>
+<?php endif; ?><?php /**PATH /Users/ehsanmody/Code/Maktab/services/old/maktabpayment/resources/views/verify/failed.blade.php ENDPATH**/ ?>

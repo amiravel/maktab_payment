@@ -13,8 +13,6 @@
                 <?php echo e(__('Cycles')); ?>
 
             </h2>
-
-            <a class="py-2 px-4 capitalize tracking-wide bg-blue-600 dark:bg-gray-800 text-white font-medium rounded hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700" href="<?php echo e(route('cycles.create')); ?>"><?php echo e(__('Create')); ?></a>
         </div>
      <?php $__env->endSlot(); ?>
 
@@ -23,15 +21,15 @@
             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('cycle-table', [])->html();
-} elseif ($_instance->childHasBeenRendered('ndvSDT1')) {
-    $componentId = $_instance->getRenderedChildComponentId('ndvSDT1');
-    $componentTag = $_instance->getRenderedChildComponentTagName('ndvSDT1');
+} elseif ($_instance->childHasBeenRendered('wMDbKYo')) {
+    $componentId = $_instance->getRenderedChildComponentId('wMDbKYo');
+    $componentTag = $_instance->getRenderedChildComponentTagName('wMDbKYo');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('ndvSDT1');
+    $_instance->preserveRenderedChild('wMDbKYo');
 } else {
     $response = \Livewire\Livewire::mount('cycle-table', []);
     $html = $response->html();
-    $_instance->logRenderedChild('ndvSDT1', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('wMDbKYo', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

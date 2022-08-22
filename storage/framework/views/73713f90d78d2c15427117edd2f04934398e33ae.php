@@ -1,1 +1,0 @@
-<?php /**PATH /Users/ehsanmody/Code/Maktab/services/old/maktabpayment/vendor/rappasoft/laravel-livewire-tables/src/../resources/views/stubs/custom.blade.php ENDPATH**/ ?>

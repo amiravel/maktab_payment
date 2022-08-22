@@ -44,7 +44,7 @@ EOD;
             'username' => env('TEXT_SMS_USERNAME'),
             'password' => env('TEXT_SMS_PASSWORD'),
             'note' => $message,
-            'receiver_number' => $payment->mobile->formatForMobileDialingInCountry('IR'),
+            'receiver_number' => $payment->mobile,
             'sender_number' => env('TEXT_SMS_NUMBER'),
         ]);
 

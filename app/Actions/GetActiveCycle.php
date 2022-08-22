@@ -11,12 +11,9 @@ class GetActiveCycle
 
     public function handle()
     {
-        $offset = 0;
-
-        do {
-            $cycle = Cycle::query()->latest()->offset($offset++)->first();
-        } while (optional($cycle)->isFull);
-
-        return $cycle ?? CreateNewCycle::run($cycle);
+        if (Cycle::without('payments')->where('ended_at', null)->exists())
+            return Cycle::without('payments')->latest()->first();
+        else
+            return CreateNewCycle::run();
     }
 }

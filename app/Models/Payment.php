@@ -3,11 +3,8 @@
 namespace App\Models;
 
 use Cerbero\QueryFilters\FiltersRecords;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Propaganistas\LaravelPhone\Casts\RawPhoneNumberCast;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Payment extends Model
 {
@@ -15,7 +12,7 @@ class Payment extends Model
     use FiltersRecords;
 
     protected $fillable = [
-        'user_id', 'name', 'mobile', 'email', 'description', 'amount', 'callback', 'information', 'read'
+        'user_id', 'name', 'mobile', 'email', 'description', 'amount', 'callback', 'extra_callback', 'information', 'read'
     ];
 
     protected $touches = [

@@ -39,7 +39,7 @@ class PaymentController extends Controller
          * @var Payment $payment
          */
         $payment = Payment::create($request->only([
-            'user_id', 'name', 'email', 'mobile', 'description', 'amount', 'callback', 'information'
+            'user_id', 'name', 'email', 'mobile', 'description', 'amount', 'callback', 'extra_callback', 'information'
         ]));
 
         if ($request->has('tags')) {
@@ -55,7 +55,6 @@ class PaymentController extends Controller
         $invoice->amount(($payment->drive->value == 'vandar') ? ($payment->amount * 10) : $payment->amount);
 
         $details = $payment->only(['name', 'email', 'mobile', 'description']);
-        $details['mobile'] = phone($details['mobile'], 'IR')->formatForMobileDialingInCountry('IR');
         $invoice->detail($details);
 
         $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)

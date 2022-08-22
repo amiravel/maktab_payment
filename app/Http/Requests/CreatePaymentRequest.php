@@ -33,6 +33,7 @@ class CreatePaymentRequest extends FormRequest
             'tags.*' => 'required|integer|exists:tags,id',
             'amount' => 'required|integer',
             'callback' => 'required|url',
+            'extra_callback' => 'nullable|url',
             'information' => 'nullable|array'
         ];
     }

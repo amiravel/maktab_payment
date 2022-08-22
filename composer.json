@@ -9,10 +9,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7",
         "bensampo/laravel-enum": "^6.0",
         "cerbero/query-filters": "^1.7",
         "doctrine/dbal": "^3.1",
@@ -20,7 +16,11 @@
         "flugger/laravel-responder": "^3.1",
         "fruitcake/laravel-cors": "^2.0",
         "globalcitizen/php-iban": "^4.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.19",
         "laravel/jetstream": "^1.6",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.0",
         "lorisleiva/laravel-actions": "^2.0",
         "maatwebsite/excel": "^3.1",
@@ -28,7 +28,7 @@
         "propaganistas/laravel-phone": "^4.3",
         "rappasoft/laravel-livewire-tables": "^2.8",
         "rollbar/rollbar-laravel": "^7.0",
-        "shetabit/payment": "^4.0",
+        "shetabit/payment": "^4.3",
         "spatie/laravel-query-builder": "^5.0"
     },
     "require-dev": {

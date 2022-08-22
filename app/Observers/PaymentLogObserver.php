@@ -18,9 +18,7 @@ class PaymentLogObserver
         $payment = $paymentLog->payment;
 
         if ($payment->status('successful')) {
-            if ($payment->mobile->isOfCountry('IR')) {
-                $paymentLog->notify(new InvoicePaid($paymentLog));
-            }
+            $paymentLog->notify(new InvoicePaid($paymentLog));
         }
     }
 }

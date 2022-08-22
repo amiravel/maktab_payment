@@ -15,8 +15,8 @@ class PaymentObserver
      */
     public function created(Payment $payment)
     {
-        CancelPayment::dispatch($payment)
-            ->delay(now()->addMinutes(15));
+        // CancelPayment::dispatch($payment)
+        //     ->delay(now()->addMinutes(15));
     }
 
     /**

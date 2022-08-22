@@ -1,3 +1,6 @@
+<?php foreach($attributes->onlyProps(['disabled' => false]) as $__key => $__value) {
+    $$__key = $$__key ?? $__value;
+} ?>
 <?php $attributes = $attributes->exceptProps(['disabled' => false]); ?>
 <?php foreach (array_filter((['disabled' => false]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
