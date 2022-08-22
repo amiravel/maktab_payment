@@ -29,7 +29,7 @@ class StoreRefundRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email',
-            'mobile' => ['required', Rule::phone()->detect()->mobile()],
+            'mobile' => 'required',
             'payment_id' => 'required_without:refID|nullable|min:1|numeric',
             'refID' => 'required_without:payment_id|nullable|min:1|numeric',
             'card_number' => ['required', new CC()],

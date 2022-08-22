@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Actions\Payment\PaymentMarkAsRead;
+use App\Actions\CancelPayment;
 use App\Models\Payment;
 
 class PaymentObserver
@@ -15,7 +15,8 @@ class PaymentObserver
      */
     public function created(Payment $payment)
     {
-        //
+        // CancelPayment::dispatch($payment)
+        //     ->delay(now()->addMinutes(15));
     }
 
     /**

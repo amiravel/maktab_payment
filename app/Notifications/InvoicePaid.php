@@ -38,6 +38,7 @@ class InvoicePaid extends Notification implements ShouldQueue
         return [SMSChannel::class];
     }
 
+    // toFoo
     public function toSMS($notifiable)
     {
         return $this->paymentLog;

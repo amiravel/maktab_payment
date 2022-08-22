@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\GetActiveCycle;
 use App\Actions\Payment\PaymentMarkAsRead;
 use App\Actions\Payment\PaymentMarkAsUnRead;
 use App\Actions\Payment\PaymentVerify;
 use App\Http\Requests\CreatePaymentRequest;
+use App\Models\Drive;
 use App\Models\Payment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -37,22 +39,23 @@ class PaymentController extends Controller
          * @var Payment $payment
          */
         $payment = Payment::create($request->only([
-            'user_id', 'name', 'email', 'mobile', 'description', 'amount', 'callback', 'information'
+            'user_id', 'name', 'email', 'mobile', 'description', 'amount', 'callback', 'extra_callback', 'information'
         ]));
 
         if ($request->has('tags')) {
             $payment->tags()->sync($request->get('tags'));
         }
 
-        if (!in_array($payment->drive->value, ['pasargad', 'zarinpal'])) {
-            DB::rollBack();
-            return back()
-                ->with('message', 'درگاه پرداخت وارد شده معتبر نیست.');
-        }
+        $cycle = GetActiveCycle::run();
+        $payment->cycles()->sync($cycle->id);
+        $payment->drive_id = Drive::whereValue($cycle->drive)->first()->id;
+        $payment->save();
 
         $invoice = new Invoice();
-        $invoice->amount(($payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount);
-        $invoice->detail($payment->only(['name', 'email', 'mobile', 'description']));
+        $invoice->amount(($payment->drive->value == 'vandar') ? ($payment->amount * 10) : $payment->amount);
+
+        $details = $payment->only(['name', 'email', 'mobile', 'description']);
+        $invoice->detail($details);
 
         $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
             ->callbackUrl(route('verify', ['payment_id' => $payment->id]))
@@ -78,7 +81,6 @@ class PaymentController extends Controller
 
     public function edit(Payment $payment)
     {
-
     }
 
     public function update(Payment $payment, Request $request)
