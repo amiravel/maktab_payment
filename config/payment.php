@@ -364,7 +364,7 @@ return [
         'sepordeh' => \Shetabit\Multipay\Drivers\Sepordeh\Sepordeh::class,
         'rayanpay' => \Shetabit\Multipay\Drivers\Rayanpay\Rayanpay::class,
         'sizpay' => \Shetabit\Multipay\Drivers\Sizpay\Sizpay::class,
-        'vandar' => \Shetabit\Multipay\Drivers\Vandar\Vandar::class,
+        'vandar' => \App\Packages\PaymentDriver\Vandar::class,
         'aqayepardakht' => \Shetabit\Multipay\Drivers\Aqayepardakht\Aqayepardakht::class
     ]
 ];

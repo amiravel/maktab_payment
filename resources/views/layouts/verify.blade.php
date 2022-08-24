@@ -46,9 +46,9 @@
             }
         }, 1000);
 
-        function submitForm() {
-            document.forms[0].submit();
-        }
+        // function submitForm() {
+        //     document.forms[0].submit();
+        // }
     </script>
 </body>
 
