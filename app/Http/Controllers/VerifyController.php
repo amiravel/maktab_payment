@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\VerifyRequest;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use App\Actions\CallExtraCallback;
 use Illuminate\Support\Facades\Validator;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
 
@@ -22,7 +22,7 @@ class VerifyController extends Controller
             'payment_id' => 'required|integer|exists:payments,id'
         ]);
 
-        if($validate->fails()) {
+        if ($validate->fails()) {
             return view('verify.failed')
                 ->with('message', 'خطا در ورودی اطلاعات');
         }
@@ -60,7 +60,7 @@ class VerifyController extends Controller
                 'type' => 'after',
                 'authority' => $payment->logs()->first()->authority,
                 'message' => $exception->getMessage(),
-                'refID' => $payment->refID
+                // 'refID' => $payment->refID
             ]);
 
             return view('verify.failed')

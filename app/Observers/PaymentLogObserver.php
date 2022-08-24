@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Actions\CallExtraCallback;
 use App\Models\PaymentLog;
 use App\Notifications\InvoicePaid;
 
@@ -16,6 +17,8 @@ class PaymentLogObserver
     public function created(PaymentLog $paymentLog)
     {
         $payment = $paymentLog->payment;
+
+        CallExtraCallback::dispatchIf(!is_null($payment->extra_callback), $payment);
 
         if ($payment->status('successful')) {
             $paymentLog->notify(new InvoicePaid($paymentLog));

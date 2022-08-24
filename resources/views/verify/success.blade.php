@@ -1,9 +1,10 @@
 <x-verify-layout>
     @if($payment->extra_callback)
-    <form method="POST" action="{{ $payment->extra_callback }}">
-        <input type="hidden" name="status" value="1">
-        <input type="hidden" name="message" value="{{ $payment->logs()->latest()->first()->message }}">
-    </form>
+    <script>
+        function submitForm() {
+            window.location.replace("{{ $payment->callback }}")
+        }
+    </script>
     @endif
     <section class="text-gray-600 body-font">
         <div class="container mx-auto flex flex-col px-5 py-12 justify-center items-center">
