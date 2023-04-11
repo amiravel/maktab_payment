@@ -6,6 +6,7 @@ module.exports = {
         "./resources/**/*.js",
         "./resources/**/*.vue",
         "./vendor/laravel/jetstream/**/*.blade.php",
+        "./app/Http/Livewire/*.php",
         "./storage/framework/views/*.php",
         "./vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php",
     ],

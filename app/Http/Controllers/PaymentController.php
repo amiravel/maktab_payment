@@ -48,7 +48,7 @@ class PaymentController extends Controller
 
         $cycle = GetActiveCycle::run();
         $payment->cycles()->sync($cycle->id);
-        $payment->drive_id = Drive::whereValue($cycle->drive)->first()->id;
+        $payment->drive_id = $request->has('fake') ? 8 : Drive::whereValue($cycle->drive)->first()->id;
         $payment->save();
 
         $invoice = new Invoice();

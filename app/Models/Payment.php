@@ -20,6 +20,7 @@ class Payment extends Model
     ];
 
     protected $casts = [
+        'referenceID' => 'string',
         'amount' => 'integer',
         'information' => 'array',
         // 'mobile' => RawPhoneNumberCast::class . ':IR',

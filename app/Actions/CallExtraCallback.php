@@ -21,7 +21,7 @@ class CallExtraCallback
             'data' => new PaymentResource($payment)
         ]);
 
-        if ($response->failed())
-            $this->dispatch($payment)->delay(now()->addSeconds(10));
+        // if ($response->failed())
+        //     $this->dispatch($payment)->delay(now()->addSeconds(10));
     }
 }

@@ -34,7 +34,8 @@ class CreatePaymentRequest extends FormRequest
             'amount' => 'required|integer',
             'callback' => 'required|url',
             'extra_callback' => 'nullable|url',
-            'information' => 'nullable|array'
+            'information' => 'nullable|array',
+            'fake' => 'nullable|boolean'
         ];
     }
 }

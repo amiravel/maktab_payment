@@ -29,5 +29,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Payment::observe(PaymentObserver::class);
         Cycle::observe(CycleObserver::class);
+
+        if ($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
     }
 }

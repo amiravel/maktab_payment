@@ -11,8 +11,9 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 
-class PaymentsExport implements FromCollection, WithHeadings, WithColumnFormatting, WithMapping, WithEvents
+class PaymentsExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder implements WithCustomValueBinder, FromCollection, WithHeadings, WithColumnFormatting, WithMapping, WithEvents
 {
 
     use Exportable;
@@ -29,7 +30,7 @@ class PaymentsExport implements FromCollection, WithHeadings, WithColumnFormatti
      */
     public function collection()
     {
-        return Payment::query()->findMany($this->payments);
+        return Payment::with(['drive'])->findMany($this->payments);
     }
 
     public function headings(): array
@@ -58,9 +59,9 @@ class PaymentsExport implements FromCollection, WithHeadings, WithColumnFormatti
             $row->mobile,
             $row->description,
             $row->amount,
-            $row->ReferenceID,
+            $row->referenceID,
             $row->drive->name,
-            $row->ReferenceID ? "موفق" : "ناموفق",
+            $row->referenceID ? "موفق" : "ناموفق",
             jdate($row->created_at),
             $row->created_at,
         ];
@@ -71,7 +72,7 @@ class PaymentsExport implements FromCollection, WithHeadings, WithColumnFormatti
         return [
             'D' => NumberFormat::FORMAT_NUMBER,
             'F' => "#,##0",
-            'G' => NumberFormat::FORMAT_NUMBER,
+            'G' => NumberFormat::FORMAT_TEXT,
         ];
     }
 
