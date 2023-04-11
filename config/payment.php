@@ -132,9 +132,9 @@ return [
             'apiGetToken' => 'https://pep.shaparak.ir/Api/v1/Payment/GetToken',
             'apiCheckTransactionUrl' => 'https://pep.shaparak.ir/Api/v1/Payment/CheckTransactionResult',
             'apiVerificationUrl' => 'https://pep.shaparak.ir/Api/v1/Payment/VerifyPayment',
-            'merchantId' => '',
-            'terminalCode' => '',
-            'certificate' => '', // can be string (and set certificateType to xml_string) or an xml file path (and set cetificateType to xml_file)
+            'merchantId' => env('PASARGAD_MERCHANTID'),
+            'terminalCode' => env('PASARGAD_TERMINALCODE'),
+            'certificate' => env('PASARGAD_CERTIFICATE'), // can be string (and set certificateType to xml_string) or an xml file path (and set cetificateType to xml_file)
             'certificateType' => 'xml_file', // can be: xml_file, xml_string
             'callbackUrl' => 'http://yoursite.com/path/to',
         ],
