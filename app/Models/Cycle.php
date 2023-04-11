@@ -38,7 +38,7 @@ class Cycle extends Model
     public function getDriveAttribute()
     {
         // temporary move to pasargad gateway
-        return $this->drives[0];
+        // return $this->drives[0];
 
         $total_payments = $this->payments()->sum('amount');
 
