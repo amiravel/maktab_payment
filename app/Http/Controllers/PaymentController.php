@@ -52,7 +52,7 @@ class PaymentController extends Controller
         $payment->save();
 
         $invoice = new Invoice();
-        $invoice->amount(($payment->drive->value == 'vandar') ? ($payment->amount * 10) : $payment->amount);
+        $invoice->amount(($payment->drive->value == 'vandar' || $payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount);
 
         $details = $payment->only(['name', 'email', 'mobile', 'description']);
         $invoice->detail($details);
