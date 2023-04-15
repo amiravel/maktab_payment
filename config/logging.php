@@ -105,7 +105,14 @@ return [
             'handler' => \Rollbar\Laravel\MonologHandler::class,
             'access_token' => env('ROLLBAR_TOKEN'),
             'level' => 'debug',
-        ]
+        ],
+
+        'payment' => [
+            'driver' => 'single',
+            'path'   => storage_path('logs/payment.log'),
+            'level'  => env('LOG_LEVEL', 'debug'),
+            'days'   => 7,
+        ],
     ],
 
 ];
