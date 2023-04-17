@@ -13,8 +13,6 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Shetabit\Multipay\Invoice;
-use Illuminate\Support\Facades\Log;
-use Exception;
 
 class PaymentController extends Controller
 {
@@ -43,18 +41,9 @@ class PaymentController extends Controller
         $payment = Payment::create($request->only([
             'user_id', 'name', 'email', 'mobile', 'description', 'amount', 'callback', 'extra_callback', 'information'
         ]));
-        try {
-            Log::channel('payment')->info('Log payment data', $request->only(['user_id', 'name', 'email', 'mobile', 'description', 'amount', 'callback', 'extra_callback', 'information']));
-        } catch (Exception $e) {
-            //
-        }
+
         if ($request->has('tags')) {
             $payment->tags()->sync($request->get('tags'));
-            try {
-                Log::channel('payment')->info('sync tags', $request->only(['tags']));
-            } catch (Exception $e) {
-                //
-            }
         }
 
         $cycle = GetActiveCycle::run();
@@ -64,20 +53,11 @@ class PaymentController extends Controller
 
         $invoice = new Invoice();
         $invoice->amount(($payment->drive->value == 'vandar' || $payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount);
-        try {
-            Log::channel('payment')->info('invoice ', ['drive' => $payment->drive->value, 'amount' => $payment->amount]);
-        } catch (Exception $e) {
-            //
-        }
+
 
 
         $details = $payment->only(['name', 'email', 'mobile', 'description']);
         $invoice->detail($details);
-        try {
-            Log::channel('payment')->info('details ', [$payment->only(['name', 'email', 'mobile', 'description'])]);
-        } catch (Exception $e) {
-            //
-        }
 
         $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
             ->callbackUrl(route('verify', ['payment_id' => $payment->id]))

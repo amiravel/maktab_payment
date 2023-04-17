@@ -11,7 +11,6 @@ class GetActiveCycle
 
     public function handle()
     {
-        return CreateNewCycle::run();
         if (Cycle::without('payments')->where('ended_at', null)->exists())
             return Cycle::without('payments')->latest()->first();
         else
