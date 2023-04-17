@@ -26,7 +26,7 @@ class CycleFactory extends Factory
             'first' => 1_000_000,
             'end' => 10_000_000,
             'percentage' => 100,
-            'drives' => ['pasargad', 'zarinpal'], // temporary move to pasargad gateway
+            'drives' => ['vandar', 'zarinpal'], 
         ];
     }
 }
