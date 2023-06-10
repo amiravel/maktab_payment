@@ -100,7 +100,7 @@ class PaymentController extends Controller
 
     public function report(string $mobile)
     {
-        $payments = Payment::where('mobile', $mobile)->successful()->select('amount')->get();
+        $payments = Payment::where('mobile', $mobile)->successful()->get();
 
         return response()->json(['payments' => $payments]);
     }
