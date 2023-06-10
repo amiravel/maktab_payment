@@ -100,8 +100,12 @@ class PaymentController extends Controller
 
     public function report(string $mobile)
     {
-        $payments = Payment::where('mobile', $mobile)->successful()->get();
+        $successfulPayments = Payment::where('mobile', $mobile)->successful()->get();
+        $unsuccessfulPayments = Payment::where('mobile', $mobile)->error()->get();
 
-        return response()->json(['payments' => $payments]);
+        return response()->json(['payments' => [
+            'successful' => $successfulPayments,
+            'unsuccessful' => $unsuccessfulPayments
+        ]]);
     }
 }
