@@ -97,4 +97,11 @@ class PaymentController extends Controller
             return back();
         }
     }
+
+    public function report(string $mobile)
+    {
+        $payments = Payment::where('mobile', $mobile)->successful()->select('amount')->get();
+
+        return response()->json(['payments' => $payments]);
+    }
 }
