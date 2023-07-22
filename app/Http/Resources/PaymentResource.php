@@ -32,7 +32,7 @@ class PaymentResource extends JsonResource
             'extra_callback' => $this->extra_callback,
             'information' => $this->information,
             'created_at' => $this->created_at,
-            'logs' => PaymentLogResource::collection($this->logs)
+            'logs' => PaymentLogResource::collection($this->logs()->orderBy('updated_at', 'desc')->get())
         ];
     }
 }
