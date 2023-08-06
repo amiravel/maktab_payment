@@ -69,10 +69,10 @@ class PaymentController extends Controller
                 ]);
             });
         if (in_array($request->get('mobile'), ["09124101910", "09302631762", "09228131017", "09217547569"]) && $payment->drive_id == 8) {
-            $pay->config('mode', 'sandbox');
+            $pay = $pay->config('mode', 'sandbox');
         }
 
-        $pay->pay();
+        $pay = $pay->pay();
 
         DB::commit();
 
