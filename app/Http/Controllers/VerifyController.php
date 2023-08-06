@@ -6,6 +6,8 @@ use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
+use Illuminate\Support\Str;
+
 
 class VerifyController extends Controller
 {
@@ -28,6 +30,11 @@ class VerifyController extends Controller
 
         $payment_id = $request->get('payment_id');
         $payment = Payment::findOrFail($payment_id);
+
+        if (in_array($payment->mobile, ["09124101910", "09302631762", "09228131017", "09217547569"]) && $payment->drive_id == 8) {
+            config()->set('payment.drivers.zarinpal.mode', 'sandbox');
+            config()->set('payment.drivers.zarinpal.merchantId', config()->get('payment.drivers.zarinpal.sandboxMerchantId'));
+        }
 
         try {
             $receipt = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)

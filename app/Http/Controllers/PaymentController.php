@@ -57,7 +57,7 @@ class PaymentController extends Controller
         
         if (in_array($request->get('mobile'), ["09124101910", "09302631762", "09228131017", "09217547569"]) && $payment->drive_id == 8) {
             config()->set('payment.drivers.zarinpal.mode' , 'sandbox');
-            config()->set('payment.drivers.zarinpal.merchantId' , Str::random(36));
+            config()->set('payment.drivers.zarinpal.merchantId' , config()->get('payment.drivers.zarinpal.sandboxMerchantId'));
         }
 
         $details = $payment->only(['name', 'email', 'mobile', 'description']);

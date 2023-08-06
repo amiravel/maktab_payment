@@ -254,6 +254,7 @@ return [
 
             'mode' => env('ZARINPAL_MODE', 'normal'), // can be normal, sandbox, zaringate
             'merchantId' => env('ZARINPAL_MERCHANTID', ''),
+            'sandboxMerchantId' => env('ZARINPAL_MERCHANTID_SANDBOX', '123456789123456789123456789123456789'),
             'callbackUrl' => 'http://yoursite.com/path/to',
             'description' => 'payment using zarinpal',
         ],
