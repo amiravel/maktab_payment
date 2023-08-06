@@ -59,7 +59,16 @@ class PaymentController extends Controller
         $details = $payment->only(['name', 'email', 'mobile', 'description']);
         $invoice->detail($details);
 
+        $config = in_array($request->get('mobile'), ["09124101910", "09302631762", "09228131017", "09217547569"]) && $payment->drive_id == 8 ?
+            [
+                'apiPurchaseUrl'     => 'https://sandbox.zarinpal.com/pg/v4/payment/request.json',
+                'apiPaymentUrl'      => 'https://sandbox.zarinpal.com/pg/StartPay/',
+                'apiVerificationUrl' => 'https://sandbox.zarinpal.com/pg/v4/payment/verify.json',
+            ] :
+            [];
+
         $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
+            ->config($config)
             ->callbackUrl(route('verify', ['payment_id' => $payment->id]))
             ->purchase($invoice, function ($driver, $transactionId) use ($payment) {
                 $payment->logs()->create([
