@@ -59,7 +59,6 @@ class PaymentController extends Controller
         $invoice->detail($details);
 
         $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
-            ->config($config)
             ->callbackUrl(route('verify', ['payment_id' => $payment->id]))
             ->purchase($invoice, function ($driver, $transactionId) use ($payment) {
                 $payment->logs()->create([
