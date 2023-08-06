@@ -46,10 +46,10 @@ class VerifyController extends Controller
                 'authority' => $payment->logs()->first()->authority,
                 'refID' => $receipt->getReferenceId(),
             ], [
-                'status' => 100,
+                'status' => config()->get('payment.drivers.zarinpal.mode') === 'sandbox' ? -9 : 100,
                 'type' => 'after',
                 'authority' => $payment->logs()->first()->authority,
-                'message' => 'پرداخت با موفقیت انجام شد.',
+                'message' => config()->get('payment.drivers.zarinpal.mode') === 'sandbox' ? 'sandbox' : 'پرداخت با موفقیت انجام شد.',
                 'refID' => $receipt->getReferenceId(),
                 'raw_receipt' => $receipt->getDetails() ?? []
             ]);
