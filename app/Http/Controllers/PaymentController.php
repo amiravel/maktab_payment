@@ -12,6 +12,7 @@ use App\Models\Payment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Shetabit\Multipay\Invoice;
 
 class PaymentController extends Controller
@@ -54,12 +55,11 @@ class PaymentController extends Controller
         $invoice = new Invoice();
         $invoice->amount(($payment->drive->value == 'vandar' || $payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount);
 
-
-
         $details = $payment->only(['name', 'email', 'mobile', 'description']);
         $invoice->detail($details);
 
         $pay = \Shetabit\Payment\Facade\Payment::via($payment->drive->value)
+            ->config($config)
             ->callbackUrl(route('verify', ['payment_id' => $payment->id]))
             ->purchase($invoice, function ($driver, $transactionId) use ($payment) {
                 $payment->logs()->create([
@@ -68,7 +68,12 @@ class PaymentController extends Controller
                     'authority' => $transactionId,
                     'message' => 'پرداخت با موفقیت ساخته شد.',
                 ]);
-            })->pay();
+            });
+        if (in_array($request->get('mobile'), ["09124101910", "09302631762", "09228131017", "09217547569"]) && $payment->drive_id == 8) {
+            $pay->config('mode', 'sandbox');
+        }
+
+        $pay->pay();
 
         DB::commit();
 
