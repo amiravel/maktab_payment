@@ -12,6 +12,7 @@ use App\Models\Payment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Shetabit\Multipay\Invoice;
 
 class PaymentController extends Controller
@@ -61,6 +62,7 @@ class PaymentController extends Controller
 
         $config = in_array($request->get('mobile'), ["09124101910", "09302631762", "09228131017", "09217547569"]) && $payment->drive_id == 8 ?
             [
+                'merchantId'         => Str::random(36),
                 'apiPurchaseUrl'     => 'https://sandbox.zarinpal.com/pg/v4/payment/request.json',
                 'apiPaymentUrl'      => 'https://sandbox.zarinpal.com/pg/StartPay/',
                 'apiVerificationUrl' => 'https://sandbox.zarinpal.com/pg/v4/payment/verify.json',
