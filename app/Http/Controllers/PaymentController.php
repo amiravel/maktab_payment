@@ -12,6 +12,7 @@ use App\Models\Payment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Shetabit\Multipay\Invoice;
 
 class PaymentController extends Controller
@@ -56,6 +57,7 @@ class PaymentController extends Controller
         
         if (in_array($request->get('mobile'), ["09124101910", "09302631762", "09228131017", "09217547569"]) && $payment->drive_id == 8) {
             config()->set('payment.drivers.zarinpal.mode' , 'sandbox');
+            config()->set('payment.drivers.zarinpal.merchantId' , Str::random(36));
         }
 
         $details = $payment->only(['name', 'email', 'mobile', 'description']);
