@@ -54,8 +54,8 @@ class PaymentController extends Controller
 
         $invoice = new Invoice();
         $invoice->amount(($payment->drive->value == 'vandar' || $payment->drive->value == 'pasargad') ? ($payment->amount * 10) : $payment->amount);
-        
-        if (in_array($request->get('mobile'), ["09124101910", "09302631762", "09228131017", "09217547569", "09361427265"]) && $payment->drive_id == 8) {
+
+        if (in_array($request->get('mobile'), ["09124101910", "09302631762", "09228131017", "09217547569", "09361427265", "09021163695", "09808080800", "09122342323"]) && $payment->drive_id == 8) {
             config()->set('payment.drivers.zarinpal.mode' , 'sandbox');
             config()->set('payment.drivers.zarinpal.merchantId' , config()->get('payment.drivers.zarinpal.sandboxMerchantId'));
         }
