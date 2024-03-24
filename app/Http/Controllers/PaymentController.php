@@ -73,7 +73,17 @@ class PaymentController extends Controller
                 "09999999993",
                 "09999999992",
                 "09999999991",
-                "09999999990",
+		"09999999990",
+		"09999999989",
+"09999999988",
+"09999999987",
+"09999999986",
+"09999999985",
+"09999999984",
+"09999999983",
+"09999999982",
+"09999999981",
+"09999999980",
             ]) && $payment->drive_id == 8) {
             config()->set('payment.drivers.zarinpal.mode', 'sandbox');
             config()->set('payment.drivers.zarinpal.merchantId', config()->get('payment.drivers.zarinpal.sandboxMerchantId'));
